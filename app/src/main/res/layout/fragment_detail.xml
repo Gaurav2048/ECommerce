@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.Fragments.DetailFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:id="@+id/toBAr"
+
+        >
+        <ImageView
+            android:layout_width="21dp"
+            android:layout_height="21dp"
+            android:src="@mipmap/ic_icon_1"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/unknown"
+            android:layout_marginRight="15dp"
+            android:layout_centerVertical="true"
+
+            />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/unknown"
+            android:id="@+id/cart_button_section"
+            android:layout_centerVertical="true"
+
+            >
+            <ImageView
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                android:src="@mipmap/ic_bag"
+
+
+                />
+            <TextView
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:text="1"
+                android:textColor="#fff"
+                android:background="@drawable/cart_ui"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="5dp"
+                android:gravity="center"
+                android:textSize="6sp"
+                android:textStyle="bold"
+
+                />
+        </RelativeLayout>
+        <ImageView
+            android:layout_width="21dp"
+            android:layout_height="21dp"
+            android:src="@mipmap/ic_search_dark"
+            android:layout_toLeftOf="@+id/cart_button_section"
+            android:layout_marginRight="15dp"
+            android:layout_centerVertical="true"
+
+
+            />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@mipmap/ic_back"
+            android:layout_alignParentLeft="true"
+            android:id="@+id/back"
+            android:layout_centerVertical="true"
+            />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@mipmap/ic_gadget"
+            android:layout_toRightOf="@+id/back"
+             android:id="@+id/img_section"
+            android:layout_centerVertical="true"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gadgets"
+            android:fontFamily="@font/playfairdisplayregular"
+            android:textColor="#000"
+            android:layout_toRightOf="@+id/img_section"
+            android:textSize="22sp"
+            android:layout_centerVertical="true"
+
+            />
+
+
+
+    </RelativeLayout>
+
+    <android.support.design.widget.TabLayout
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toBAr"
+        android:id="@+id/tablayout"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="@color/tab_background_selected"
+        app:tabIndicatorHeight="2dp"
+        app:tabBackground="@color/white"
+        app:tabMode="scrollable"
+        app:tabTextColor="@color/tab_background_unselected"
+        app:tabSelectedTextColor="@color/tab_background_selected"
+        android:elevation="2dp"
+        />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/tablayout"
+        android:background="#E5E9F2"
+        />
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="64dp"
+        android:id="@+id/viewPager"
+        android:layout_below="@+id/tablayout"
+        />
+
+
+</RelativeLayout>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.Fragments.SubFragments.LegalFragment">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Vantage Point"
+        android:fontFamily="@font/rochesterregular"
+        android:textSize="25sp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:textColor="#000"
+        android:id="@+id/legal_vantage_top"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/legal_vantage_top"
+        android:layout_marginTop="10dp"
+        android:textColor="#fff"
+        android:background="#F54739"
+        android:text="Legal Policies"
+        android:fontFamily="@font/dominebold"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="7dp"
+        android:paddingBottom="7dp"
+        android:id="@+id/legalPolicies"
+
+        />
+
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/legalPolicies"
+        android:background="#fff"
+        android:layout_marginTop="10dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            >
+            <TextView
+                android:id="@+id/tem_of_use"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Term of Use"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:paddingBottom="20dp"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical|left"
+                android:drawableRight="@drawable/ic_chevron_right_black_24dp"
+                android:fontFamily="@font/playfairdisplayregular"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                />
+
+            <TextView
+                android:id="@+id/privacy_policy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:fontFamily="@font/playfairdisplayregular"
+                android:gravity="center_vertical|left"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:textColor="#000"
+                android:textSize="14sp"
+                android:drawableRight="@drawable/ic_chevron_right_black_24dp"
+                android:text="Privacy Policy" />
+
+            <TextView
+                android:id="@+id/Affiliate_policy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:fontFamily="@font/playfairdisplayregular"
+                android:gravity="center_vertical|left"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:textColor="#000"
+                android:drawableRight="@drawable/ic_chevron_right_black_24dp"
+                android:textSize="14sp"
+                android:text="Affiliate Policy " />
+
+            <TextView
+                android:id="@+id/infringement_policy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:fontFamily="@font/playfairdisplayregular"
+                android:gravity="center_vertical|left"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:drawableRight="@drawable/ic_chevron_right_black_24dp"
+                android:textColor="#000"
+                android:textSize="14sp"
+                android:text="Infringement Policy" />
+
+            <TextView
+                android:id="@+id/license"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:fontFamily="@font/playfairdisplayregular"
+                android:gravity="center_vertical|left"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:textColor="#000"
+                android:drawableRight="@drawable/ic_chevron_right_black_24dp"
+                android:textSize="14sp"
+                android:text="License" />
+
+            <TextView
+                android:id="@+id/return_policy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:fontFamily="@font/playfairdisplayregular"
+                android:gravity="center_vertical|left"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:textColor="#000"
+                android:drawableRight="@drawable/ic_chevron_right_black_24dp"
+                android:textSize="14sp"
+                android:text="Return Policy" />
+
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+
+
+
+</RelativeLayout>

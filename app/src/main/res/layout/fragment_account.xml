@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/grad_back"
+    tools:context=".view.Fragments.AccountFragment">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Account"
+        android:fontFamily="@font/playfairdisplayregular"
+        android:textColor="#fff"
+        android:background="#F54739"
+        android:gravity="center"
+        android:textSize="25sp"
+        android:padding="10dp"
+        android:id="@+id/account_fragment_label"
+
+        />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/account_fragment_label"
+        android:background="#fff"
+        android:elevation="3dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:id="@+id/account_data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Account Information"
+                android:textSize="18sp"
+                android:textColor="#000"
+                android:drawableLeft="@drawable/ic_account_info"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical|left"
+                android:fontFamily="@font/playfairdisplayregular"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2px"
+                android:background="#cbcbcb"
+                />
+
+            <TextView
+                android:id="@+id/myOrders"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:drawableLeft="@drawable/ic_my_orders"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/playfairdisplayregular"
+                android:gravity="center_vertical|left"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:textColor="#000"
+                android:textSize="18sp"
+                android:text="My Orders" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2px"
+                android:background="#cbcbcb"
+                />
+
+            <TextView
+                android:id="@+id/q_a"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:visibility="gone"
+                android:drawableLeft="@drawable/ic_question_answers"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/playfairdisplayregular"
+                android:gravity="center_vertical|left"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:textColor="#000"
+                android:textSize="18sp"
+                android:text="Questions and answers" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2px"
+                android:visibility="gone"
+                android:background="#cbcbcb"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:drawableLeft="@drawable/ic_home_address"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/playfairdisplayregular"
+                android:gravity="center_vertical|left"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:id="@+id/account_address"
+                android:textColor="#000"
+                android:textSize="18sp"
+                android:text="My Address" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2px"
+                android:background="#cbcbcb"
+                />
+
+            <TextView
+                android:id="@+id/legal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:drawableLeft="@drawable/ic_legal"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/playfairdisplayregular"
+                android:gravity="center_vertical|left"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:textColor="#000"
+                android:textSize="18sp"
+                android:text="Legal" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2px"
+                android:background="#cbcbcb"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:drawableLeft="@drawable/ic_sign_out"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/playfairdisplayregular"
+                android:gravity="center_vertical|left"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:textColor="#000"
+                android:textSize="18sp"
+                android:text="Sign out" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2px"
+                android:background="#cbcbcb"
+                />
+
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</RelativeLayout>

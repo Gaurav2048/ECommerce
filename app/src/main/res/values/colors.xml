@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="gray">#CCD2DA</color>
+    <color name="mellon_rd">#F39056</color>
+    <color name="tab_background_selected">#F54739</color>
+    <color name="tab_background_unselected">#000</color>
+    <color name="colorTransperent">#cccccc</color>
+
+    <color name="purple_500">#7739E6</color>
+    <color name="deep_purple_500">#F39056</color>
+    <color name="indigo_500">#EC1A1A</color>
+    <color name="blue_500">#F39056</color>
+    <color name="cyan_500">#9C27B0</color>
+    <color name="light_blue_500">#F39056</color>
+    <color name="bg_row_background">#fa315b</color>
+    <color name="price_text_color">#EB4EAAB5</color>
+    <color name="white">#fff</color>
+    <color name="black">#000</color>
+    <color name="shimmer_gray">#E7E7E6</color>
+
+</resources>

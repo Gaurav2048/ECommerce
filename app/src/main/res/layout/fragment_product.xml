@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/swipeRefresh"
+    android:layout_height="match_parent"
+    tools:context=".view.Fragments.SubFragments.ProductFragment">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Vantage Point"
+        android:fontFamily="@font/rochesterregular"
+        android:textSize="25sp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:textColor="#000"
+        android:id="@+id/vantage_top"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/vantage_top"
+        android:layout_marginTop="10dp"
+        android:textColor="#fff"
+        android:background="#F54739"
+        android:text="Your Cart"
+        android:fontFamily="@font/dominebold"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="7dp"
+        android:paddingBottom="7dp"
+        android:id="@+id/yourProducts"
+
+        />
+
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/yourProducts"
+        android:id="@+id/productRecyclerView"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
+        />
+
+</RelativeLayout>
+
+</android.support.v4.widget.SwipeRefreshLayout>

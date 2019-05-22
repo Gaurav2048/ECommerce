@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/view_name"
+        android:text="Newest offers"
+        android:textAllCaps="true"
+        android:fontFamily="@font/suezoneregular"
+        android:textColor="#000"
+        android:textScaleX="1.1"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:textSize="14sp"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:text="See all"
+        android:textAllCaps="true"
+        android:textSize="14sp"
+        android:textColor="#000"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentRight="true"
+        android:fontFamily="@font/suezoneregular"
+        android:drawableRight="@mipmap/ic_mark"
+        android:gravity="center"
+        android:id="@+id/seeAll"
+        />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recyclerCamera"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/seeAll"
+
+        />
+
+</RelativeLayout>

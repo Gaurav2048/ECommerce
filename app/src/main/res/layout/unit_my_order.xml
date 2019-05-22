@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="3dp"
+    android:background="#fff"
+    android:layout_marginTop="3dp"
+    android:layout_marginBottom="3dp"
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lorem Ipsum scrambled it to make"
+        android:textColor="#000"
+        android:textSize="16sp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:maxLines="1"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/playfairdisplayregular"
+        android:id="@+id/product_title"
+
+        />
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/product_image_view"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/product_title"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="5dp"
+        android:background="#cbcbcb"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_below="@+id/product_title"
+        android:layout_toLeftOf="@+id/product_image_view"
+        android:layout_marginRight="5dp"
+        android:layout_alignBottom="@+id/product_image_view"
+        android:layout_marginTop="20dp"
+        android:textSize="12sp"
+        android:text="survived not only five centuries, but also the \n leap into electronic typesetting, remaining essential"
+        android:fontFamily="@font/domineregular"
+        android:textColor="#AE000000"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="#cbcbcb"
+        android:layout_below="@+id/product_image_view"
+        android:layout_marginTop="5dp"
+        android:id="@+id/divider_order"
+
+        />
+
+        <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/divider_order"
+        android:numStars="5"
+        android:layout_marginLeft="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginRight="30dp"
+        android:rating="2.5"
+        android:stepSize="0.1"
+        android:id="@+id/ratingBars"
+        android:layout_marginTop="10dp"
+        />
+</RelativeLayout>

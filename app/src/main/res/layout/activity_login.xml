@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/relativelayout"
+    android:background="@drawable/animation_list"
+    android:layout_height="match_parent"
+    tools:context=".view.LoginActivity">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
+    >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Vantage Point"
+        android:fontFamily="@font/rochesterregular"
+        android:textColor="#fff"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:id="@+id/vintage"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_below="@+id/vintage"
+        android:background="@drawable/login_back"
+        android:padding="16dp"
+        android:hint="User name"
+        android:textColorHint="#fff"
+        android:id="@+id/username"
+        android:backgroundTint="@color/colorTransperent"
+        android:fontFamily="@font/domineregular"
+        android:layout_marginTop="30dp"
+        android:textCursorDrawable="@drawable/login_cursor"
+        android:textSize="14sp"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_below="@+id/username"
+        android:background="@drawable/login_back"
+        android:padding="16dp"
+        android:hint="Password"
+        android:textColorHint="#fff"
+        android:textCursorDrawable="@drawable/login_cursor"
+        android:backgroundTint="@color/colorTransperent"
+        android:fontFamily="@font/domineregular"
+        android:layout_marginTop="15dp"
+        android:textSize="14sp"
+        android:id="@+id/password"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/login_btn"
+        android:layout_below="@+id/password"
+        android:layout_marginTop="15dp"
+        android:text="Login"
+        android:gravity="center"
+        android:fontFamily="@font/dominebold"
+        android:textColor="#fff"
+        android:id="@+id/loginButton"
+
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_below="@+id/loginButton"
+        android:layout_marginTop="15dp"
+        android:text="@string/info"
+        android:gravity="center"
+        android:textColor="#fff"
+        android:fontFamily="@font/rochesterregular"
+        android:textSize="14sp"
+        android:id="@+id/helper"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/helper"
+        android:layout_marginTop="10dp"
+        android:textColor="#fff"
+        android:text="OR"
+        android:id="@+id/or"
+        />
+
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/or"
+    android:drawableLeft="@mipmap/ic_facebook"
+    android:layout_marginLeft="35dp"
+    android:layout_marginRight="35dp"
+    android:layout_marginTop="10dp"
+    android:text="Login with Facebook"
+    android:fontFamily="@font/domineregular"
+    android:gravity="center_vertical|left"
+    android:textSize="15sp"
+    android:layout_centerHorizontal="true"
+    android:id="@+id/login_with_facebook"
+    android:textColor="#fff"
+
+    />
+
+</RelativeLayout>
+
+
+</RelativeLayout>

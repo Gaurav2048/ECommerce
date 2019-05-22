@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="20dp"
+    android:layout_marginBottom="-10dp"
+    app:cardBackgroundColor="#fff"
+    android:layout_height="300dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:orientation="horizontal"
+            android:layout_marginLeft="15dp"
+            android:id="@+id/introduction"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="20dp"
+            >
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/item_image"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
+                android:background="#cbcbcb"
+
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1"
+
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Apple Smart watch series 142 milli 42 MM "
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:id="@+id/product_name_bottom"
+                    android:fontFamily="@font/domineregular"
+                    android:textSize="14sp"
+                    android:lineSpacingExtra="6dp"
+                    android:padding="4dp"
+
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$ 7000"
+                    android:textColor="@color/mellon_rd"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/domineregular"
+                    />
+
+                <TextView
+                    android:id="@+id/originalPriceBottom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="10dp"
+                    android:fontFamily="@font/domineregular"
+                    android:text="$1200"
+                    android:textColor="#A3ACBC"
+
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:layout_below="@+id/introduction"
+            android:background="#cbcbcb"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:id="@+id/line"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SELECT QTY"
+            android:fontFamily="@font/dominebold"
+            android:layout_below="@+id/line"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            android:id="@+id/quantity_bottom"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/quantity_bottom"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/quant_panel"
+            android:layout_marginTop="20dp"
+            >
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@mipmap/ic_minus"
+                android:id="@+id/cart_minus"
+                android:background="@drawable/minus_back"
+
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/cart_number"
+                    android:text="2"
+                    android:textColor="#000"
+                    android:textSize="12sp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+
+                    />
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:id="@+id/cart_plus"
+                android:src="@mipmap/ic_plus"
+                android:background="@drawable/minus_back"
+
+                />
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_below="@id/quant_panel"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/cart_btn"
+            android:text="Add To Cart "
+            android:layout_centerHorizontal="true"
+            android:textColor="#fff"
+            android:fontFamily="@font/domineregular"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:id="@+id/addToCartBottom"
+            />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

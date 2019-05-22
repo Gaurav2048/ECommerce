@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.Fragments.SubFragments.OrderItemFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Vantage Point"
+        android:fontFamily="@font/rochesterregular"
+        android:textSize="25sp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:textColor="#000"
+        android:id="@+id/item_detail_vantage_top"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/item_detail_vantage_top"
+        android:layout_marginTop="10dp"
+        android:textColor="#fff"
+        android:background="#F54739"
+        android:text="Item details"
+        android:fontFamily="@font/dominebold"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="7dp"
+        android:paddingBottom="7dp"
+        android:id="@+id/itemDetails"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ORDER ID - 11000334532"
+        android:fontFamily="@font/domineregular"
+        android:layout_below="@+id/itemDetails"
+        android:layout_marginLeft="20dp"
+        android:textColor="#D7000000"
+        android:layout_marginTop="10dp"
+        android:id="@+id/order_id"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="2"
+        android:text="Lancher running shoes for men"
+        android:fontFamily="@font/dominebold"
+        android:textColor="#000"
+        android:layout_below="@+id/order_id"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:textSize="19sp"
+        android:id="@+id/order_product_name"
+        android:layout_toLeftOf="@+id/order_image"
+        />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/order_id"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:id="@+id/order_image"
+        android:layout_marginLeft="15dp"
+        android:background="#cbcbcb"
+
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$ 300"
+        android:textSize="18sp"
+        android:layout_below="@+id/order_product_name"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="22dp"
+        android:fontFamily="@font/dominebold"
+        android:textColor="@color/price_text_color"
+
+
+        />
+
+    <TextView
+        android:id="@+id/quantity"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Quantity : 1"
+        android:textColor="#000"
+        android:fontFamily="@font/domineregular"
+        android:textSize="14sp"
+        android:layout_below="@+id/order_image"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:padding="4dp"
+        android:gravity="center"
+        android:background="@drawable/quantity"
+
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="#cbcbcb"
+        android:layout_below="@+id/quantity"
+        android:layout_marginTop="10dp"
+        android:id="@+id/devider"
+                />
+
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="90dp"
+        android:src="@mipmap/ic_delivered"
+        android:scaleType="centerCrop"
+        android:layout_below="@+id/devider"
+        android:layout_marginTop="20dp"
+        android:id="@+id/delivered"
+        android:layout_marginLeft="20dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/label_date_of_order"
+        android:layout_alignTop="@+id/delivered"
+        android:text="Ordered Date"
+        android:textColor="@color/black"
+        android:fontFamily="@font/dominebold"
+        android:layout_marginTop="4dp"
+        android:layout_toRightOf="@+id/delivered"
+        android:layout_marginLeft="20dp"
+        android:textSize="15sp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/label_date_of_order"
+        android:text="13th June, 2017"
+        android:layout_toRightOf="@+id/delivered"
+        android:layout_marginLeft="25dp"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/label_date_of_receive"
+        android:layout_alignBottom="@+id/delivered"
+        android:text="Delivered  Date"
+        android:textColor="@color/black"
+        android:fontFamily="@font/dominebold"
+        android:layout_toRightOf="@+id/delivered"
+        android:layout_marginLeft="20dp"
+        android:paddingBottom="3dp"
+        android:textSize="15sp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/label_date_of_receive"
+        android:text="20th June, 2017"
+        android:layout_toRightOf="@+id/delivered"
+        android:layout_marginLeft="25dp"
+
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="#cbcbcb"
+        android:layout_below="@+id/delivered"
+        android:layout_marginTop="50dp"
+        android:id="@+id/finisher"
+        />
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:layout_below="@+id/finisher"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:id="@+id/rating_product"
+
+
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit Rate"
+        android:textColor="#fff"
+        android:background="@color/tab_background_selected"
+        android:layout_below="@+id/rating_product"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:fontFamily="@font/domineregular"
+
+        />
+
+
+</RelativeLayout>

@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/productCoordinator"
+    android:background="@drawable/grad_back"
+    android:layout_height="match_parent"
+    tools:context=".view.ProductActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <com.flipboard.bottomsheet.BottomSheetLayout
+        android:id="@+id/bottomsheet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Apple Smart watch series 142 milli 42 MM "
+        android:textSize="30sp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:fontFamily="@font/playfairdisplayregular"
+        android:textColor="#000"
+        android:layout_marginTop="30dp"
+        android:id="@+id/product_title"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="By"
+        android:textColor="#9599B4"
+        android:layout_below="@+id/product_title"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="10dp"
+        android:textSize="15sp"
+        android:fontFamily="@font/playfairdisplayregular"
+        android:id="@+id/by"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Apple Singapore"
+        android:textColor="#000"
+        android:fontFamily="@font/playfairdisplayregular"
+        android:layout_toRightOf="@+id/by"
+        android:layout_below="@+id/product_title"
+        android:layout_marginTop="20dp"
+
+        />
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/by"
+        android:layout_above="@+id/divider"
+        >
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    >
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/image_card"
+        app:cardElevation="0dp"
+        app:cardCornerRadius="3dp"
+        >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <android.support.v4.view.ViewPager
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/product_image_viewPager"
+
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/mDotLayout"
+            >
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+    </android.support.v7.widget.CardView>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_toLeftOf="@+id/flag"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
+    android:id="@+id/controll_items"
+    android:layout_below="@+id/image_card"
+    android:layout_marginTop="20dp"
+    >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="7dp"
+    android:id="@+id/add_to_wish_list"
+    android:background="@drawable/detail_back"
+    android:layout_weight="1"
+    android:layout_below="@id/image_card"
+    android:elevation="2dp"
+    android:layout_marginRight="10dp"
+    android:orientation="horizontal"
+    >
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@mipmap/ic_like"
+        android:padding="3dp"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_weight="1"
+        android:text="Wishlist"
+        android:background="#fff"
+        android:paddingLeft="3dp"
+        android:fontFamily="@font/playfairdisplayregular"
+        android:textColor="@color/mellon_rd"
+        android:layout_marginRight="7dp"
+        android:drawablePadding="10dp"
+        android:textSize="14sp"
+        android:gravity="center_vertical|left"
+
+        />
+
+
+
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="7dp"
+        android:id="@+id/add_to_cart"
+        android:layout_weight="1"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/detail_back"
+        android:elevation="2dp"
+        android:orientation="horizontal"
+        >
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@mipmap/ic_bag"
+        android:padding="3dp"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_weight="1"
+        android:text="Add cart"
+        android:background="#fff"
+        android:paddingLeft="3dp"
+        android:fontFamily="@font/playfairdisplayregular"
+        android:textColor="#000"
+        android:layout_marginRight="7dp"
+        android:drawablePadding="10dp"
+        android:textSize="14sp"
+        android:gravity="center_vertical|left"
+
+        />
+    </LinearLayout>
+</LinearLayout>
+
+    <ImageView
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:layout_below="@+id/image_card"
+        android:id="@+id/flag"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/detail_back"
+        android:src="@mipmap/ic_flag"
+        android:padding="10dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="About the product "
+        android:layout_below="@+id/controll_items"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="15dp"
+        android:textColor="#000"
+        android:fontFamily="@font/playfairdisplayregular"
+        android:textSize="15sp"
+        android:id="@+id/about_product"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Brand new factory sealed in retail box Series 1 Apple watch. work with iPhone 5 or later, not compatible with Android phone"
+        android:textColor="#9599B4"
+        android:maxLines="4"
+        android:textSize="14sp"
+        android:layout_below="@+id/about_product"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:fontFamily="@font/playfairdisplayregular"
+        android:lineSpacingExtra="2dp"
+        android:id="@+id/detail"
+
+
+        />
+    </RelativeLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:id="@+id/divider"
+        android:layout_marginTop="15dp"
+        android:layout_above="@+id/priceOrg__"
+        android:layout_marginBottom="15dp"
+        android:background="#E5E9F2"
+
+        />
+
+    <TextView
+        android:id="@+id/priceOrg__"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
+        android:layout_above="@+id/onlyNow__"
+        android:text="$1299"
+        android:layout_marginLeft="15dp"
+        android:fontFamily="@font/dominebold"
+        android:layout_marginBottom="15dp"
+        android:textColor="#A3ACBC" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/to_pay"
+        android:textColor="#EB4EAAB5"
+        android:text="Now Only"
+        android:layout_marginLeft="15dp"
+        android:fontFamily="@font/domineregular"
+        android:background="#00FFFFFF"
+        android:id="@+id/onlyNow__"
+        android:layout_marginBottom="15dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/to_pay"
+        android:layout_toRightOf="@+id/onlyNow__"
+        android:text=" $299"
+        android:textColor="#4EAAB5"
+        android:layout_marginLeft="5dp"
+        android:background="#00FFFFFF"
+        android:fontFamily="@font/dominebold"
+        android:id="@+id/price__"
+        android:layout_marginBottom="15dp"
+
+
+
+        />
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/to_buy_back"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/to_pay"
+        android:padding="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+
+        >
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="BUY NOW"
+    android:textAllCaps="true"
+    android:textColor="#fff"
+    android:layout_marginLeft="16dp"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentLeft="true"
+    android:id="@+id/buy_now"
+    android:fontFamily="@font/playfairdisplayregular"
+
+    />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/buy_now"
+            android:text="Continue to fill information"
+            android:textColor="#C8FFFFFF"
+            android:layout_marginLeft="16dp"
+            android:fontFamily="@font/playfairdisplayregular"
+            android:id="@+id/to_info"
+            />
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:id="@+id/to_stuff"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/detail_back"
+            android:layout_marginRight="5dp"
+            android:src="@mipmap/ic_mark"
+
+            />
+
+    </RelativeLayout>
+    </RelativeLayout>
+    </com.flipboard.bottomsheet.BottomSheetLayout>
+    </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

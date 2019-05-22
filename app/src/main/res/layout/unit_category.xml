@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="100dp"
+    android:layout_height="130dp"
+    android:layout_marginRight="30dp"
+    android:background="#fff"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/categorylayout"
+        android:visibility="gone"
+        >
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="#cbcbcb"
+        android:id="@+id/category_image"
+        android:scaleType="centerCrop"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gadget"
+        android:fontFamily="@font/playfairdisplaybold"
+        android:layout_below="@+id/category_image"
+        android:layout_marginTop="6dp"
+        android:textSize="13sp"
+        android:layout_marginLeft="6dp"
+        android:textColor="#000"
+
+        />
+    </RelativeLayout>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/shimmerlayout2"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/categorylayout_sh"
+            >
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:background="#cbcbcb"
+                android:id="@+id/category_image_sh"
+                android:scaleType="centerCrop"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gadget"
+                android:fontFamily="@font/playfairdisplaybold"
+                android:layout_below="@+id/category_image_sh"
+                android:layout_marginTop="6dp"
+                android:textSize="13sp"
+                android:layout_marginLeft="6dp"
+                android:textColor="#000"
+
+                />
+        </RelativeLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+</RelativeLayout>

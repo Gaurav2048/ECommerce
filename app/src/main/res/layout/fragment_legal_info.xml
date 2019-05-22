@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/grad_back"
+    tools:context=".view.Fragments.SubFragments.LegalInfoFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Vantage Point"
+        android:fontFamily="@font/rochesterregular"
+        android:textSize="25sp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:textColor="#000"
+        android:id="@+id/legal_info_vantage_top"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/legal_info_vantage_top"
+        android:layout_marginTop="10dp"
+        android:textColor="#fff"
+        android:background="#F54739"
+        android:text="Terms of Use"
+        android:fontFamily="@font/dominebold"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="7dp"
+        android:paddingBottom="7dp"
+        android:id="@+id/legalPolicies_detail"
+        />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/legalPolicies_detail"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+
+        >
+        <TextView
+            android:id="@+id/receiver"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/long_text"
+            android:fontFamily="@font/domineregular"
+            android:gravity="left"
+            android:lineSpacingExtra="1.3dp"
+            android:textColor="#000"
+
+                    />
+    </android.support.v4.widget.NestedScrollView>
+
+
+
+</RelativeLayout>
