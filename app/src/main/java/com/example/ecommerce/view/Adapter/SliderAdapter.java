@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import com.example.ecommerce.Models.DataTypes.Product;
 import com.example.ecommerce.R;
 import com.squareup.picasso.Picasso;
 
@@ -16,9 +17,11 @@ public class SliderAdapter  extends PagerAdapter {
 
     Context context;
     LayoutInflater layoutInflater;
+    Product product;
 
-    public SliderAdapter(Context context) {
+    public SliderAdapter(Context context, Product product) {
         this.context = context;
+        this.product = product;
     }
 
     @Override
@@ -39,7 +42,13 @@ public class SliderAdapter  extends PagerAdapter {
          View view= layoutInflater.inflate(R.layout.slide_layut,container,false);
         ImageView imageView = view.findViewById(R.id.image_slide);
         container.addView(view);
-        Picasso.get().load("https://images.pexels.com/photos/267394/pexels-photo-267394.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500").into(imageView);
+        if(position==0){
+            Picasso.get().load(product.getmImage1()).into(imageView);
+        }else if (position ==1){
+            Picasso.get().load(product.getmImage2()).into(imageView);
+        }else if(position == 2){
+            Picasso.get().load(product.getmImage3()).into(imageView);
+        }
         return view;
     }
 

@@ -77,6 +77,23 @@ public class CartController {
             }.execute();
     }
 
+
+    public void getSavedCart(){
+        new AsyncTask<Void, Void, List<Cart>>(){
+
+            @Override
+            protected List<Cart> doInBackground(Void... voids) {
+                return cartDatabase.cartDao().get_Saved_for_later_items();
+            }
+
+            @Override
+            protected void onPostExecute(List<Cart> carts) {
+                cartAction.onResultSavedList(carts);
+            }
+        }.execute();
+    }
+
+
     int count =0;
     public int getCartSize(){
         new AsyncTask<Void, Void, Integer>() {
@@ -94,6 +111,25 @@ public class CartController {
         }.execute();
 
         return count;
+    }
+
+
+    public void updateItem(final Cart cart){
+        new AsyncTask<Cart, Void, Void>(){
+
+            @Override
+            protected Void doInBackground(Cart... carts) {
+                cartDatabase.cartDao().updateCartItem(carts[0]);
+                getCart();
+                getSavedCart();
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                super.onPostExecute(aVoid);
+            }
+        }.execute(cart);
     }
 
 

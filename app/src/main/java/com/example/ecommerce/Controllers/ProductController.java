@@ -31,13 +31,13 @@ ProductsInterface mProductsInterface;
 
     public ProductController(ProductActions productActions) {
         this.mProductActions = productActions;
-        mRetrofit = new RetrofitBuilder().buildRetrofitObject();
+        mRetrofit = RetrofitBuilder.getInstance().buildRetrofitObject();
         mProductsInterface = mRetrofit.create(ProductsInterface.class);
     }
 
 
-    public void get_Products_List_by_category(String category_id, String user_id){
-        Call<ProductList> call = mProductsInterface.getProductsList(category_id, user_id);
+    public void get_Products_List_by_category(String category_id, String user_id, String offset){
+        Call<ProductList> call = mProductsInterface.getProductsList( user_id,  offset);
 
         mProductActions.onFetchStart();
         call.enqueue(new Callback<ProductList>() {
@@ -93,9 +93,25 @@ ProductsInterface mProductsInterface;
         });
      }
 
-    public void get_all_new_popular_products(String user_id,String count){
+    public void get_all_new_products_by_category(String user_id, String count, String category ){
         mProductActions.onFetchStart();
-        Call<ProductList> call = mProductsInterface.get_all_new_popular_products(user_id,count);
+        Call<ProductList> call = mProductsInterface.get_all_new_products_by_category(user_id, count, category);
+        call.enqueue(new Callback<ProductList>() {
+            @Override
+            public void onResponse(Call<ProductList> call, Response<ProductList> response) {
+                mProductActions.onFetchProgress(response.body().getProductList());
+            }
+
+            @Override
+            public void onFailure(Call<ProductList> call, Throwable t) {
+                mProductActions.onFetchFailed(t);
+            }
+        });
+    }
+
+    public void get_new_popular_productsByCategory(String user_id,String count, String cateegory){
+        mProductActions.onFetchStart();
+        Call<ProductList> call = mProductsInterface.get_all_new_popular_products(user_id,count, cateegory);
         call.enqueue(new Callback<ProductList>() {
             @Override
             public void onResponse(Call<ProductList> call, Response<ProductList> response) {
@@ -110,9 +126,9 @@ ProductsInterface mProductsInterface;
     }
 
 
-    public void get_all_new_exclusive_products(String user_id,String count){
+    public void get_all_new_exclusive_products(String user_id,String count, String category){
         mProductActions.onFetchStart();
-        Call<ProductList> call = mProductsInterface.get_all_new_exclusive_products(user_id,count);
+        Call<ProductList> call = mProductsInterface.get_all_new_exclusive_products(user_id,count, category);
         call.enqueue(new Callback<ProductList>() {
             @Override
             public void onResponse(Call<ProductList> call, Response<ProductList> response) {
@@ -126,9 +142,9 @@ ProductsInterface mProductsInterface;
         });
     }
 
-    public void get_all_new_onsale_products(String user_id,String count){
+    public void get_all_new_onsale_products(String user_id,String count, String category){
         mProductActions.onFetchStart();
-        Call<ProductList> call = mProductsInterface.get_all_new_onsale_products(user_id,count);
+        Call<ProductList> call = mProductsInterface.get_all_new_onsale_products(user_id,count, category);
         call.enqueue(new Callback<ProductList>() {
             @Override
             public void onResponse(Call<ProductList> call, Response<ProductList> response) {

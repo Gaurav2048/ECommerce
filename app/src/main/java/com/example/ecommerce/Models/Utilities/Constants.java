@@ -22,10 +22,19 @@ public class Constants {
     public static final String TAG_PRODUCT_VIEW = "product_view";
 
 
+    // oertation tags
+    public static final String TAG_ADD_TO_WISHLIST = "add_to_wishlist";
+    public static final String TAG_ACTION_SEARCH = "action_search";
+
+
 
     // activity tags
 
     public static final String TAG_PRODUCT_DETAIL= "product";
+
+
+    // payment
+    public static final String TAG_PAYMENT_ACTION = "payment_action";
 
 
     // intent extra keys

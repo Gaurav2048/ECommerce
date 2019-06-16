@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.Fragments.Auth.RegisterFragment">
+
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_centerInParent="true"
+      android:layout_marginLeft="20dp"
+      android:layout_marginRight="20dp"
+
+      >
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Vantage Point"
+          android:fontFamily="@font/rochesterregular"
+          android:textColor="#fff"
+          android:textSize="30sp"
+          android:gravity="center"
+          android:layout_marginBottom="20dp"
+          android:id="@+id/vintage_register_top"
+          />
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+          android:id="@+id/name_layout"
+          android:layout_below="@+id/vintage_register_top"
+
+          >
+
+
+
+          <RelativeLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:layout_marginRight="10dp"
+              android:background="@drawable/login_back"
+              >
+              <EditText
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/first_name"
+                  android:layout_toLeftOf="@+id/cancel_first_name"
+                  android:padding="16dp"
+                  android:background="#00FFFFFF"
+                  android:hint="First Name"
+                  android:textColorHint="#fff"
+                  android:backgroundTint="@color/colorTransperent"
+                  android:fontFamily="@font/domineregular"
+                  android:textCursorDrawable="@drawable/login_cursor"
+                  android:textSize="14sp"
+                  />
+              <ImageView
+                  android:layout_width="30dp"
+                  android:layout_height="30dp"
+                  android:layout_centerVertical="true"
+                  android:layout_alignParentRight="true"
+                  android:layout_marginRight="10dp"
+                  android:padding="4dp"
+                  android:visibility="invisible"
+                  android:src="@mipmap/ic_cross"
+                  android:layout_marginLeft="10dp"
+                  android:id="@+id/cancel_first_name"
+                  />
+
+          </RelativeLayout>
+
+
+          <RelativeLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:background="@drawable/login_back"
+              android:layout_marginLeft="10dp"
+              >
+              <EditText
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/last_name"
+                  android:background="#00FFFFFF"
+                  android:layout_toLeftOf="@+id/cancel_last_name"
+                  android:padding="16dp"
+                  android:hint="Last name"
+                  android:textColorHint="#fff"
+                  android:backgroundTint="@color/colorTransperent"
+                  android:fontFamily="@font/domineregular"
+                  android:textCursorDrawable="@drawable/login_cursor"
+                  android:textSize="14sp"
+                  />
+              <ImageView
+                  android:layout_width="30dp"
+                  android:layout_height="30dp"
+                  android:layout_centerVertical="true"
+                  android:padding="4dp"
+                  android:layout_alignParentRight="true"
+                  android:layout_marginRight="10dp"
+                  android:src="@mipmap/ic_cross"
+                  android:visibility="invisible"
+                  android:layout_marginLeft="10dp"
+                  android:id="@+id/cancel_last_name"
+                  />
+
+          </RelativeLayout>
+
+      </LinearLayout>
+
+      <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:layout_marginTop="20dp"
+          android:background="@drawable/login_back"
+          android:layout_below="@+id/name_layout"
+          android:id="@+id/email_layout"
+          >
+          <EditText
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:id="@+id/email"
+              android:layout_toLeftOf="@+id/cancel_email_address"
+              android:padding="16dp"
+              android:background="#00FFFFFF"
+              android:textColorHint="#fff"
+              android:hint="Email address"
+              android:backgroundTint="@color/colorTransperent"
+              android:fontFamily="@font/domineregular"
+              android:textCursorDrawable="@drawable/login_cursor"
+              android:textSize="14sp"
+              />
+          <ImageView
+              android:layout_width="30dp"
+              android:layout_height="30dp"
+              android:layout_centerVertical="true"
+              android:layout_alignParentRight="true"
+              android:layout_marginRight="10dp"
+              android:padding="4dp"
+              android:layout_marginLeft="10dp"
+              android:src="@mipmap/ic_cross"
+              android:visibility="invisible"
+              android:id="@+id/cancel_email_address"
+              />
+
+      </RelativeLayout>
+
+
+      <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:layout_below="@id/email_layout"
+          android:id="@+id/password_layout"
+          android:background="@drawable/login_back"
+          android:layout_marginTop="20dp"
+          >
+          <EditText
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:id="@+id/password"
+              android:layout_toLeftOf="@+id/cancel_password"
+              android:padding="16dp"
+              android:background="#00FFFFFF"
+              android:textColorHint="#fff"
+              android:hint="password"
+              android:backgroundTint="@color/colorTransperent"
+              android:fontFamily="@font/domineregular"
+              android:textCursorDrawable="@drawable/login_cursor"
+              android:textSize="14sp"
+              />
+          <ImageView
+              android:layout_width="30dp"
+              android:layout_height="30dp"
+              android:layout_centerVertical="true"
+              android:layout_alignParentRight="true"
+              android:layout_marginRight="10dp"
+              android:src="@mipmap/ic_cross"
+              android:visibility="invisible"
+              android:padding="4dp"
+              android:layout_marginLeft="10dp"
+              android:id="@+id/cancel_password"
+              />
+
+      </RelativeLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginTop="20dp"
+    android:layout_below="@id/password_layout"
+    android:animateLayoutChanges="true"
+    android:id="@+id/password_re_layout"
+    >
+      <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:background="@drawable/login_back"
+          >
+          <EditText
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:id="@+id/cnf_password"
+              android:layout_toLeftOf="@+id/cancel_cnf_password"
+              android:padding="16dp"
+              android:background="#00FFFFFF"
+              android:textColorHint="#fff"
+              android:hint="Confirm Password"
+              android:backgroundTint="@color/colorTransperent"
+              android:fontFamily="@font/domineregular"
+              android:textCursorDrawable="@drawable/login_cursor"
+              android:textSize="14sp"
+              />
+          <ImageView
+              android:layout_width="30dp"
+              android:layout_height="30dp"
+              android:layout_centerVertical="true"
+              android:layout_alignParentRight="true"
+              android:layout_marginRight="10dp"
+              android:visibility="invisible"
+              android:layout_marginLeft="10dp"
+              android:padding="4dp"
+              android:src="@mipmap/ic_cross"
+              android:id="@+id/cancel_cnf_password"
+              />
+
+      </RelativeLayout>
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text=""
+          android:background="#000"
+          android:textColor="#fff"
+          android:minWidth="10dp"
+          android:layout_below="@+id/password_re_layout"
+          android:layout_marginTop="10dp"
+          android:layout_marginBottom="10dp"
+          android:id="@+id/message_dialog"
+          android:visibility="gone"
+          />
+</LinearLayout>
+      <Button
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:background="@drawable/login_btn"
+          android:layout_below="@+id/password_re_layout"
+          android:layout_marginTop="15dp"
+          android:text="Register"
+          android:gravity="center"
+          android:fontFamily="@font/dominebold"
+          android:textColor="#fff"
+          android:id="@+id/RegisterButton"
+
+          />
+
+  </RelativeLayout>
+
+</RelativeLayout>

@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/viewLayout"
-        android:visibility="gone"
+        android:visibility="visible"
         android:background="#00FFFFFF"
         >
         <ImageView
@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/product_text"
             android:textColor="#EB4EAAB5"
-            android:text="Now Only"
+            android:text="Now Only $ "
             android:fontFamily="@font/domineregular"
             android:background="#00FFFFFF"
             android:id="@+id/onlyNow"
@@ -67,33 +67,34 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/onlyNow"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="4dp"
             android:layout_marginBottom="10dp"
             android:background="#00FFFFFF"
             android:text="$1299"
             android:fontFamily="@font/dominebold"
             android:textColor="#A3ACBC" />
+
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@mipmap/ic_like"
-            android:background="#fff"
-            android:layout_alignParentRight="true"
+            android:id="@+id/add_to_wish_list"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_below="@+id/product_text"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="1dp"
             android:layout_marginRight="10dp"
-            android:layout_marginTop="4dp"
+            android:background="#00FFFFFF"
             android:elevation="2dp"
-            android:padding="5dp"
+            android:padding="8dp"
 
 
-
-            />
+            android:src="@mipmap/ic_like" />
 
     </RelativeLayout>
 
     <com.facebook.shimmer.ShimmerFrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:visibility="gone"
         android:id="@+id/shimmerLayout1"
         android:background="#00FFFFFF"
 

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/grad_back"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.Fragments.DetailFragment">
 
@@ -104,7 +105,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/toBAr"
-        android:id="@+id/tablayout"
+        android:id="@+id/textV"
         app:tabGravity="fill"
         app:tabIndicatorColor="@color/tab_background_selected"
         app:tabIndicatorHeight="2dp"
@@ -117,15 +118,15 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_below="@+id/tablayout"
+        android:layout_below="@+id/textV"
         android:background="#E5E9F2"
         />
     <android.support.v4.view.ViewPager
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="64dp"
         android:id="@+id/viewPager"
-        android:layout_below="@+id/tablayout"
+        android:background="#00FFFFFF"
+        android:layout_below="@+id/textV"
         />
 
 

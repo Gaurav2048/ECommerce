@@ -23,7 +23,7 @@ public interface ProductsInterface {
      * */
 
     @GET("products")
-    Call<ProductList> getProductsList(@Query("category") String category_id, @Query("user_id") String user_id);
+    Call<ProductList> getProductsList( @Query("user_id") String user_id, @Query("offset") String id);
 
 
     /***
@@ -41,14 +41,17 @@ public interface ProductsInterface {
     @GET("new_products")
     Call<ProductList> get_all_new_products(@Query("user_id") String user_id, @Query("id") String count);
 
+    @GET("new_category_products")
+    Call<ProductList> get_all_new_products_by_category(@Query("user_id") String user_id, @Query("id") String count, @Query("category") String category);
+
     @GET("new_popular_products")
-    Call<ProductList> get_all_new_popular_products(@Query("user_id") String user_id,@Query("id") String count);
+    Call<ProductList> get_all_new_popular_products(@Query("user_id") String user_id,@Query("id") String count, @Query("category") String category);
 
     @GET("new_exclusive_products")
-    Call<ProductList> get_all_new_exclusive_products(@Query("user_id") String user_id,@Query("id") String count);
+    Call<ProductList> get_all_new_exclusive_products(@Query("user_id") String user_id,@Query("id") String count, @Query("category") String category);
 
     @GET("new_onsale_products")
-    Call<ProductList> get_all_new_onsale_products(@Query("user_id") String user_id,@Query("id") String count);
+    Call<ProductList> get_all_new_onsale_products(@Query("user_id") String user_id,@Query("id") String count, @Query("category") String category);
 
 
 

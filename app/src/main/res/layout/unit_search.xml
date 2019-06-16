@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingTop="10dp"
+    android:layout_marginTop="3dp"
+    android:layout_marginBottom="3dp"
+    android:paddingBottom="10dp"
+    android:background="#fff">
+    <android.support.v7.widget.CardView
+        android:layout_width="90dp"
+        android:layout_height="110dp"
+        android:layout_marginLeft="20dp"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="0dp"
+        android:id="@+id/image_view"
+        >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/search_image_back"
+        android:id="@+id/search_img"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
+
+        />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:id="@+id/discount_view"
+            android:background="@drawable/discount_back"
+            android:layout_marginLeft="-1.7dp"
+            android:layout_marginTop="-1.7dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="30%"
+                android:textSize="18sp"
+                android:id="@+id/discount_textview"
+                android:textColor="#fff"
+                android:fontFamily="@font/domineregular"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="OFF"
+                android:textColor="#fff"
+                android:fontFamily="@font/domineregular"
+
+
+                />
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="25dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="14dp"
+        android:src="@drawable/featured_gp"
+        android:scaleType="fitStart"
+        android:id="@+id/featured"
+        android:layout_marginTop="70dp"
+
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/image_view"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="10dp"
+        android:text="Sony Alpha 500 Kit 6-50"
+        android:maxLines="2"
+        android:textColor="#000"
+        android:textAllCaps="true"
+        android:fontFamily="@font/dominebold"
+        android:textSize="16sp"
+        android:id="@+id/product_name"
+
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:text="Current Price : $ "
+        android:layout_toRightOf="@+id/image_view"
+        android:layout_marginLeft="5dp"
+        android:textSize="14sp"
+        android:fontFamily="@font/dominebold"
+        android:layout_marginRight="5dp"
+        android:layout_below="@+id/product_name"
+        android:layout_marginTop="6dp"
+        android:textAllCaps="true"
+        android:id="@+id/current_price"
+        android:textColor="@color/price_text_color"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/product_name"
+        android:layout_toRightOf="@+id/current_price"
+        android:id="@+id/price"
+        android:layout_marginLeft="4dp"
+        android:text="300"
+        android:textSize="14sp"
+        android:fontFamily="@font/dominebold"
+        android:layout_marginTop="6dp"
+        android:textColor="@color/price_text_color"
+
+
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/image_view"
+        android:layout_below="@+id/current_price"
+        android:layout_marginLeft="5dp"
+        android:text="204 Upvote"
+        android:id="@+id/upvoteCount"
+        android:layout_marginTop="4dp"
+        android:textSize="12sp"
+        android:fontFamily="@font/dominebold"
+        android:textColor="@color/tab_background_selected"
+
+        />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/upvote_button"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="60dp"
+        android:src="@mipmap/ic_like"
+        android:padding="7dp"
+
+        />
+
+</RelativeLayout>

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.example.ecommerce.Controllers.CategoryController;
 import com.example.ecommerce.Controllers.ProductController;
@@ -52,10 +53,12 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.viewHo
             viewHolder.shimmerFrameLayout.startShimmer();
             viewHolder.categorylayout.setVisibility(View.GONE);
         } else {
+            category category = categoryList.get(i);
             viewHolder.shimmerFrameLayout.setVisibility(View.GONE);
             viewHolder.shimmerFrameLayout.stopShimmer();
             viewHolder.categorylayout.setVisibility(View.VISIBLE);
-            Picasso.get().load("https://images.pexels.com/photos/69463/sowa-key-ring-keychain-key-ring-pendant-69463.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500").into(viewHolder.category_image);
+            viewHolder.categoryName.setText(category.getmCategoryName());
+            Picasso.get().load(category.getmImage()).into(viewHolder.category_image);
         }
     }
 
@@ -94,12 +97,14 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.viewHo
 
     public class viewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView category_image;
+        TextView categoryName;
         ShimmerFrameLayout shimmerFrameLayout;
         RelativeLayout categorylayout;
 
         public viewHolder(@NonNull View itemView) {
             super(itemView);
             category_image = itemView.findViewById(R.id.category_image);
+            categoryName = itemView.findViewById(R.id.categoryName);
             shimmerFrameLayout = itemView.findViewById(R.id.shimmerlayout2);
             categorylayout = itemView.findViewById(R.id.categorylayout);
             itemView.setOnClickListener(this);
@@ -107,7 +112,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.viewHo
 
         @Override
         public void onClick(View v) {
-            clickListner.onClickPosition(v, Constants.TAG_PRODUCT_VIEW,"");
+            clickListner.onClickPosition(v, Constants.TAG_CAMERA,Utility.getCategoryString(categoryList.get(getAdapterPosition())));
         }
     }
 

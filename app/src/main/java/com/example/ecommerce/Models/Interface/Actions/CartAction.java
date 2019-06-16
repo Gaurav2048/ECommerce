@@ -9,6 +9,7 @@ public interface CartAction {
     void onResultCount(int Count);
     void onResultCartList(List<Cart> cartList);
     void onRemoveCartItem();
+    void onResultSavedList(List<Cart> savedList);
     void onCartItemAdded();
 
 }

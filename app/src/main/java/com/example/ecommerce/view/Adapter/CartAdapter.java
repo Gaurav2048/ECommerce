@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.ecommerce.Models.DataTypes.Cart;
 import com.example.ecommerce.Models.DataTypes.Product;
+import com.example.ecommerce.Models.Interface.UI_Helpers.EditCartInterface;
 import com.example.ecommerce.R;
 import com.squareup.picasso.Picasso;
 
@@ -22,9 +23,13 @@ import java.util.List;
 public class CartAdapter extends RecyclerView .Adapter<CartAdapter.viewHolder>{
 
     List<Cart> cartList;
+    EditCartInterface cartInterface;
+    Context context;
 
-    public CartAdapter(@NonNull Context context,List<Cart> cartList) {
+    public CartAdapter(@NonNull Context context, List<Cart> cartList, EditCartInterface cartInterface) {
         this.cartList=cartList;
+        this.context = context;
+        this.cartInterface = cartInterface;
     }
 
     @NonNull
@@ -89,11 +94,20 @@ public class CartAdapter extends RecyclerView .Adapter<CartAdapter.viewHolder>{
             spinner=itemView.findViewById(R.id.spinner);
             save_for_later=itemView.findViewById(R.id.save_for_later);
             remove=itemView.findViewById(R.id.remove);
+
+            save_for_later.setOnClickListener(this);
+            remove.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
+            if(v == remove){
 
+            }else if(v == save_for_later){
+                Cart cart = cartList.get(getAdapterPosition());
+                cart.setFlag(0);
+                cartInterface.updateItem(cart);
+            }
         }
     }
 }

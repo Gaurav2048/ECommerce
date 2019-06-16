@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.Fragments.Search.HistoryFragment">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/history_indicator"
+        android:text="NO RECENT_SEARCHES"
+        android:textSize="17sp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:textColor="#000"
+        android:fontFamily="@font/suezoneregular"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clear History"
+        android:textSize="12sp"
+        android:textColor="@color/tab_background_selected"
+        android:layout_alignParentRight="true"
+        android:id="@+id/clear_history"
+        android:fontFamily="@font/suezoneregular"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="25dp"
+
+                />
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/history_indicator"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:id="@+id/historyRecycler"
+
+        />
+
+</RelativeLayout>

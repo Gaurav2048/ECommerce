@@ -16,6 +16,9 @@ public class Product implements Serializable {
     @SerializedName("category")
     String mCategory;
 
+    @SerializedName("description")
+    String mDescription;
+
     @SerializedName("image1")
     String mImage1;
 
@@ -33,7 +36,10 @@ public class Product implements Serializable {
     String mDiscount;
 
     @SerializedName("upvoted")
-    boolean isUpvoted;
+    String Upvote;
+
+    @SerializedName("isupvoted")
+    String isupvoted;
 
     @SerializedName("createdAt")
     String mCreatedAt;
@@ -42,7 +48,30 @@ public class Product implements Serializable {
     String mUpdatedAt;
 
 
+    public String getUpvote() {
+        return Upvote;
+    }
 
+    public void setUpvote(String upvote) {
+        Upvote = upvote;
+    }
+
+    public String getIsupvoted() {
+        return isupvoted;
+    }
+
+    public void setIsupvoted(String isupvoted) {
+        this.isupvoted = isupvoted;
+    }
+
+
+    public String getmDescription() {
+        return mDescription;
+    }
+
+    public void setmDescription(String mDescription) {
+        this.mDescription = mDescription;
+    }
 
     public String getmItemName() {
         return mItemName;
@@ -72,9 +101,7 @@ public class Product implements Serializable {
         return mDiscount;
     }
 
-    public boolean isUpvoted() {
-        return isUpvoted;
-    }
+
 
     public String getmCreatedAt() {
         return mCreatedAt;
@@ -108,9 +135,7 @@ public class Product implements Serializable {
         this.mDiscount = mDiscount;
     }
 
-    public void setUpvoted(boolean upvoted) {
-        isUpvoted = upvoted;
-    }
+
 
     public void setmImage1(String mImage1) {
         this.mImage1 = mImage1;

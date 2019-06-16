@@ -17,7 +17,7 @@ public interface cartDao {
     @Insert
     void insertItemToCart (Cart cart);
 
-    @Query("SELECT * FROM Cart")
+    @Query("SELECT * FROM Cart WHERE flag = 1")
     List<Cart> get_Cart_List ();
 
     @Query("SELECT COUNT(*) FROM Cart")
@@ -28,6 +28,9 @@ public interface cartDao {
 
     @Delete
     void delete_Cart_item (Cart cart);
+
+    @Query("SELECT * FROM Cart WHERE flag = 0")
+    List<Cart> get_Saved_for_later_items();
 
 
 

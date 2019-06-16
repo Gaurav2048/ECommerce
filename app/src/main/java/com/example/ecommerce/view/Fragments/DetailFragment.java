@@ -37,7 +37,7 @@ public class DetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_detail, container, false);
-        tablayout=view.findViewById(R.id.tablayout);
+        tablayout=view.findViewById(R.id.textV);
         viewPager=view.findViewById(R.id.viewPager);
 
         tabAdapter = new TabAdapter(getChildFragmentManager());

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.Fragments.WishListFragment">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentLeft="false"
+        android:id="@+id/cart_button"
+        >
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@mipmap/ic_bag"
+            android:layout_alignParentRight="true"
+
+            />
+        <TextView
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:text="1"
+            android:textColor="#fff"
+            android:background="@drawable/cart_ui"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:gravity="center"
+            android:textSize="6sp"
+            android:textStyle="bold"
+
+            />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:fontFamily="@font/playfairdisplaybold"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp"
+        android:textColor="#000"
+        android:layout_below="@+id/cart_button"
+        android:textSize="25sp"
+        android:id="@+id/app_name"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/app_name"
+        android:layout_marginLeft="20dp"
+        android:textColor="#000"
+        android:text="Vantage goods all at awesome price"
+        android:layout_marginTop="3dp"
+        android:fontFamily="@font/playfairdisplayregular"
+        android:textScaleX="1.2"
+        android:id="@+id/description"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/description"
+        android:background="@drawable/grad_back"
+        >
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:id="@+id/wishListRecyclerView"
+
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:orientation="vertical"
+        android:id="@+id/no_item_layout"
+        android:layout_centerInParent="true"
+        android:alpha="0"
+
+        >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/favorite"
+            android:padding="80dp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:text="NO ITEM FOUND"
+            android:textAllCaps="true"
+            android:layout_marginTop="-70dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:fontFamily="@font/dominebold"
+            android:textColor="@color/tab_background_selected"
+
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>

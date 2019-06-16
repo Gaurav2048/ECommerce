@@ -98,7 +98,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         @Override
         public void onClick(View v) {
             if(v==seeAll){
-                clickListner.onClickPosition(v,"camera","");
+                clickListner.onClickPosition(v,Constants.TAG_PRODUCT_VIEW,"");
             }
         }
     }
@@ -114,11 +114,13 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             productRecycler= itemView.findViewById(R.id.recyclerCamera);
             itemView.setOnClickListener(this);
             seeAll.setOnClickListener(this);
+            view_name.setText("POPULAR PRODUCTS");
+            seeAll.setVisibility(View.INVISIBLE);
         }
 
         @Override
         public void onClick(View v) {
-            clickListner.onClickPosition(v, Constants.TAG_PARTICULAR_PRODUCT, "");
+           //  clickListner.onClickPosition(v, Constants.TAG_PARTICULAR_PRODUCT, "");
         }
     }
 

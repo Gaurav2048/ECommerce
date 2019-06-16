@@ -4,6 +4,10 @@
     package="com.example.ecommerce">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-sdk android:targetSdkVersion="27"
+              android:minSdkVersion="14"
+              tools:overrideLibrary="com.razorpay"/>
 
     <application
         android:allowBackup="true"
@@ -12,8 +16,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.MainActivity"></activity>
+        <activity android:name=".view.CartActivity"></activity>
+        <activity
+            android:name=".view.MainActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".view.ProductActivity" />
+
+        <meta-data
+            android:name="com.razorpay.ApiKey"
+            android:value="rzp_test_pBXwge8XtHvceK"
+            />
+
         <activity
             android:name=".view.LoginActivity"
             android:fitsSystemWindows="true">

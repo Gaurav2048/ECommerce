@@ -22,6 +22,7 @@ import com.example.ecommerce.Models.Interface.UI_Helpers.ClickListner;
 import com.example.ecommerce.Models.Sharedpreferences.AppPreferences;
 import com.example.ecommerce.Models.Utilities.Utility;
 import com.example.ecommerce.R;
+import com.example.ecommerce.view.Utility.GeneralUtility;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.squareup.picasso.Picasso;
 
@@ -59,12 +60,25 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.viewHold
             viewHolder.shimmerLayout1.startShimmer();
 
         }else{
+            Product product = productList.get(i);
             viewHolder.shimmerLayout1.stopShimmer();
             viewHolder.shimmerLayout1.setVisibility(View.GONE);
             viewHolder.viewLayout.setVisibility(View.VISIBLE);
-            Picasso.get().load("https://images.pexels.com/photos/821738/pexels-photo-821738.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500").into(viewHolder.product_image);
+            viewHolder.product_text.setText(product.getmItemName());
+            viewHolder.priceOrg.setText("$ "+product.getmPrice());
+            try{
+                int amount = Integer.parseInt(product.getmPrice());
+                int discount = Integer.parseInt(product.getmDiscount());
+                float applicableError = amount*(1-(discount/100.0f));
+                viewHolder.price.setText(String.valueOf(Math.floor(applicableError)));
+            }catch (Exception e){
+
+            }
+
+            Picasso.get().load(product.getmImage1()).into(viewHolder.product_image);
             viewHolder.priceOrg.setPaintFlags(viewHolder.priceOrg.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         }
+
 
 
     }
@@ -113,22 +127,30 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.viewHold
 
 
     public class viewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-    ImageView product_image;
-    ShimmerFrameLayout shimmerLayout1;
-    RelativeLayout viewLayout;
-    TextView priceOrg;
+        ImageView product_image;
+        ShimmerFrameLayout shimmerLayout1;
+        RelativeLayout viewLayout;
+        TextView product_text,price;
+        TextView priceOrg;
         public viewHolder(@NonNull View itemView) {
             super(itemView);
             product_image=(ImageView) itemView.findViewById(R.id.product_image);
             priceOrg=(TextView) itemView.findViewById(R.id.priceOrg);
             shimmerLayout1=(ShimmerFrameLayout) itemView.findViewById(R.id.shimmerLayout1);
+            product_text = itemView.findViewById(R.id.product_text);
+            price = itemView.findViewById(R.id.price);
             viewLayout=itemView.findViewById(R.id.viewLayout);
             itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
-            clickListner.onClickPosition(v,"product","");
+            if(!isSchimming) {
+                int position = getAdapterPosition();
+                Product product = productList.get(position);
+                String data = GeneralUtility.getStringFromObject(product);
+                clickListner.onClickPosition(v, "product", data);
+            }
          }
     }
 }

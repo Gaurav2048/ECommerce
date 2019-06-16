@@ -23,7 +23,7 @@ public class CategoryController {
     CategoryActions categoryActions;
     Context context;
     public CategoryController(Context context,CategoryActions categoryActions){
-        mRetrofit = new RetrofitBuilder().buildRetrofitObject();
+        mRetrofit = RetrofitBuilder.getInstance().buildRetrofitObject();
         this.context = context;
         this.categoryActions = categoryActions;
         categoryInterface = mRetrofit.create(CategoryInterface.class);

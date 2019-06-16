@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimary">#fff</color>
+    <color name="colorPrimaryDark">#fff</color>
     <color name="colorAccent">#D81B60</color>
     <color name="gray">#CCD2DA</color>
     <color name="mellon_rd">#F39056</color>
@@ -20,5 +20,7 @@
     <color name="white">#fff</color>
     <color name="black">#000</color>
     <color name="shimmer_gray">#E7E7E6</color>
+    <color name="no_color">#00FFFFFF</color>
+    <color name="shimmer">#716d61</color>
 
 </resources>

@@ -31,10 +31,20 @@ public class Cart {
     @ColumnInfo(name = "quantity")
     int Quantity;
 
+    @ColumnInfo(name = "flag")
+    int flag;
+
     public Cart(){
 
     }
 
+    public int getFlag() {
+        return flag;
+    }
+
+    public void setFlag(int flag) {
+        this.flag = flag;
+    }
 
     public String getProductId() {
         return productId;

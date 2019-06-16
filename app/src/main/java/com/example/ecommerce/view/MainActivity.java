@@ -1,5 +1,6 @@
 package com.example.ecommerce.view;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
@@ -8,19 +9,26 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.example.ecommerce.Controllers.ProductController;
 import com.example.ecommerce.Models.DataTypes.Product;
+import com.example.ecommerce.Models.DataTypes.category;
 import com.example.ecommerce.Models.Interface.Actions.ProductActions;
 import com.example.ecommerce.Models.Interface.UI_Helpers.DataInterface;
+import com.example.ecommerce.Models.Interface.UI_Helpers.SearchInterface;
+import com.example.ecommerce.Models.Sharedpreferences.AppPreferences;
 import com.example.ecommerce.Models.Utilities.Constants;
+import com.example.ecommerce.Models.Utilities.Utility;
 import com.example.ecommerce.view.Adapter.BottomBarAdapter;
 import com.example.ecommerce.view.Fragments.AccountFragment;
 import com.example.ecommerce.view.Fragments.CartFragment;
@@ -28,6 +36,8 @@ import com.example.ecommerce.view.Fragments.DetailFragment;
 import com.example.ecommerce.view.Fragments.ForYouFragment;
 import com.example.ecommerce.Models.Interface.UI_Helpers.ClickListner;
 import com.example.ecommerce.R;
+import com.example.ecommerce.view.Fragments.Search.SearchResultFragment;
+import com.example.ecommerce.view.Fragments.Search.SuggestedFragment;
 import com.example.ecommerce.view.Fragments.SearchFragment;
 import com.example.ecommerce.view.Fragments.SubFragments.AccountInfoFragment;
 import com.example.ecommerce.view.Fragments.SubFragments.AddEditAddressFragment;
@@ -38,11 +48,17 @@ import com.example.ecommerce.view.Fragments.SubFragments.MyOrderFragment;
 import com.example.ecommerce.view.Fragments.SubFragments.OrderItemFragment;
 import com.example.ecommerce.view.Fragments.SubFragments.ProductFragment;
 import com.example.ecommerce.view.Fragments.SubFragments.QAFragment;
+import com.example.ecommerce.view.Fragments.WishListFragment;
 import com.example.ecommerce.view.widget.NoSwipePager;
+import com.razorpay.Checkout;
+import com.razorpay.PaymentResultListener;
 
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements ClickListner {
+public class MainActivity extends AppCompatActivity implements ClickListner, PaymentResultListener {
 
 
 
@@ -51,21 +67,18 @@ public class MainActivity extends AppCompatActivity implements ClickListner {
     NoSwipePager viewPager;
     ProductController controller;
     DataInterface dataInterface;
+    AppPreferences appPreferences;
+    ArrayList<Integer> trackList = new ArrayList<>();
     private BottomBarAdapter pagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            Window w = getWindow();
-            w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-        }
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-     //   getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
-
+        trackList.add(0);
         setupViewPager();
+        appPreferences = new AppPreferences(getApplicationContext());
 
 
         bottomNavigation = (AHBottomNavigation) findViewById(R.id.bottom_navigation);
@@ -79,6 +92,7 @@ public class MainActivity extends AppCompatActivity implements ClickListner {
         bottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
             @Override
             public boolean onTabSelected(int position, boolean wasSelected) {
+                  trackList.add(position);
                   viewPager.setCurrentItem(position,false);
                   return true;
             }
@@ -96,16 +110,14 @@ public class MainActivity extends AppCompatActivity implements ClickListner {
 
     @Override
     public void onBackPressed() {
-
-        if (viewPager.getCurrentItem() == 0) {
-            // If the user is currently looking at the first step, allow the system to handle the
-            // Back button. This calls finish() on this activity and pops the back stack.
-            super.onBackPressed();
-        } else {
-            // Otherwise, select the previous step.
-            viewPager.setCurrentItem(viewPager.getCurrentItem() - 1);
-        }
-
+          if (trackList.size() == 0 ) {
+              super.onBackPressed();
+          } else {
+              Toast.makeText(getApplicationContext(),trackList.size()+" ", Toast.LENGTH_SHORT).show();
+              viewPager.setCurrentItem(trackList.get(trackList.size()-1),false);
+              trackList.remove(trackList.size()-1);
+              Log.e( "onBackPressed: ",trackList.size()+" " );
+          }
 
     }
 
@@ -113,13 +125,6 @@ public class MainActivity extends AppCompatActivity implements ClickListner {
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
         if (hasFocus) {
-            getWindow().getDecorView().setSystemUiVisibility(
-                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                            | View.SYSTEM_UI_FLAG_FULLSCREEN
-                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         }
     }
     public void setupBottomNavBehaviors() {
@@ -164,7 +169,7 @@ public class MainActivity extends AppCompatActivity implements ClickListner {
 
         pagerAdapter.addFragments(new ForYouFragment());
         pagerAdapter.addFragments(new SearchFragment());
-        pagerAdapter.addFragments(new ForYouFragment());
+        pagerAdapter.addFragments(new WishListFragment());
         pagerAdapter.addFragments(new CartFragment());
         pagerAdapter.addFragments(new AccountFragment());
 
@@ -200,6 +205,29 @@ public class MainActivity extends AppCompatActivity implements ClickListner {
         viewPager.setAdapter(pagerAdapter);
 
 
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int i, float v, int i1) {
+
+            }
+
+            @Override
+            public void onPageSelected(int i) {
+
+                Log.e( "onPageSelected: ",trackList.size()+" " );
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+
+            }
+        });
+
+
+
+
+
     }
 
     public void setDataInterface(DataInterface Interface){
@@ -216,8 +244,8 @@ public class MainActivity extends AppCompatActivity implements ClickListner {
         AHBottomNavigationItem item1 = new AHBottomNavigationItem(R.string.tab_1, R.mipmap.ic_star, R.color.colorPrimary);
         AHBottomNavigationItem item2 = new AHBottomNavigationItem(R.string.tab_2, R.mipmap.ic_nav_search, R.color.colorPrimary);
         AHBottomNavigationItem item3 = new AHBottomNavigationItem(R.string.tab_3, R.mipmap.ic_nav_heart, R.color.colorPrimary);
-        AHBottomNavigationItem item4 = new AHBottomNavigationItem(R.string.tab_3, R.mipmap.ic_nav_heart, R.color.colorPrimary);
-        AHBottomNavigationItem item5 = new AHBottomNavigationItem(R.string.tab_3, R.mipmap.ic_nav_user, R.color.colorPrimary);
+        AHBottomNavigationItem item4 = new AHBottomNavigationItem(R.string.tab_4, R.mipmap.ic_nav_cart_1, R.color.colorPrimary);
+        AHBottomNavigationItem item5 = new AHBottomNavigationItem(R.string.tab_5, R.mipmap.ic_nav_user, R.color.colorPrimary);
 
         bottomNavigation.addItem(item1);
         bottomNavigation.addItem(item2);
@@ -235,38 +263,145 @@ public class MainActivity extends AppCompatActivity implements ClickListner {
         }
     }
 
+    String phrase = null;
+    category Caterogy = null;
+
+    public category getCaterogy() {
+        return Caterogy;
+    }
+
+    public String getPhrase() {
+        return phrase;
+    }
 
     @Override
     public void onClickPosition(View view, String tag,  String data) {
         if(tag.equals(Constants.TAG_CAMERA)){
+            trackList.add(5);
+            Caterogy = Utility.getCategoryObject(data);
             viewPager.setCurrentItem(5,false);
         }else if (tag.equals(Constants.TAG_PRODUCT_DETAIL)){
             Intent intent = new Intent(getApplicationContext(), ProductActivity.class);
             intent.putExtra(Constants.PRODUCT,data);
             startActivity(intent);
         }else if(tag.equals(Constants.TAG_MY_ORDER)){
+            trackList.add(6);
             viewPager.setCurrentItem(6, false);
         }else if (tag.equals(Constants.TAG_ADDRESS)){
+            trackList.add(7);
             viewPager.setCurrentItem(7, false);
         }else if(tag.equals(Constants.TAG_LEGAL)){
+            trackList.add(8);
             viewPager.setCurrentItem(8, false);
         }else if (tag.equals(Constants.TAG_EDIT_ADDA_ADDRESS)){
             data="passed some";
+            trackList.add(9);
             viewPager.setCurrentItem(9, false);
             dataInterface.onReceiveData(data);
         }else if(tag.equals(Constants.TAG_LEGAL_INFO)){
+            trackList.add(10);
             viewPager.setCurrentItem(10, false);
             dataInterface.onReceiveData("legal detail id ");
         }else if (tag.equals(Constants.TAG_ORDER_ITEM_DETAIL)){
+            trackList.add(11);
             viewPager.setCurrentItem(11, false);
             dataInterface.onReceiveData("");
         }else if(tag.equals(Constants.TAG_ACCOUNT_INFO)){
+            trackList.add(12);
             viewPager.setCurrentItem(12, false);
         }else if(tag.equals(Constants.TAG_PRODUCT_VIEW)){
+            trackList.add(13);
             viewPager.setCurrentItem(13, false);
+        }else if(tag.equals(Constants.TAG_ADD_TO_WISHLIST)){
+            addToWishList(data);
+        }else if(tag.equals(Constants.TAG_ACTION_SEARCH)){
+           this.phrase = data;
+        }else if(tag.equals(Constants.TAG_PAYMENT_ACTION)){
+            startPayment();
+        }
+    }
+
+    private void addToWishList(String data) {
+
+        Product product = Utility.getProductObject(data);
+        List<Product> wishList = Utility.getWishList(appPreferences.getWishList());
+        if(wishList!=null)
+        {
+            if(wishList.contains(product)){
+
+            }else {
+                wishList.add(product);
+            }
+        }else {
+            wishList = new ArrayList<>();
+            wishList.add(product);
+        }
+        appPreferences.setWishList(wishList);
+
+        Log.e( "addToWishList: ",wishList.size()+" " );
+
+    }
+
+    public void startPayment() {
+        /**
+         * Instantiate Checkout
+         */
+        Checkout checkout = new Checkout();
+
+        /**
+         * Set your logo here
+         */
+        checkout.setImage(R.drawable.ic_question_answers);
+
+        /**
+         * Reference to current activity
+         */
+        final Activity activity = this;
+
+        /**
+         * Pass your payment options to the Razorpay Checkout as a JSONObject
+         */
+        try {
+            JSONObject options = new JSONObject();
+
+            /**
+             * Merchant Name
+             * eg: ACME Corp || HasGeek etc.
+             */
+            options.put("name", "Vantage Point");
+
+            /**
+             * Description can be anything
+             * eg: Order #123123
+             *     Invoice Payment
+             *     etc.
+             */
+            options.put("description", "Order #123456");
+
+            options.put("currency", "INR");
+
+            /**
+             * Amount is always passed in PAISE
+             * Eg: "500" = Rs 5.00
+             */
+            options.put("amount", "300");
+
+            checkout.open(activity, options);
+        } catch(Exception e) {
+            Log.e(" Razorpay Checkout", e.getMessage());
         }
     }
 
 
 
+    @Override
+    public void onPaymentSuccess(String s) {
+        Log.e( "onPaymentSuccess: ",s.toString() );
+    }
+
+    @Override
+    public void onPaymentError(int i, String s) {
+        Log.e( "onPaymentError: ",s+" " );
+
+    }
 }

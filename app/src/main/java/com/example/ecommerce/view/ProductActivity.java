@@ -16,6 +16,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.ecommerce.Controllers.CartController;
@@ -38,7 +39,8 @@ public class ProductActivity extends AppCompatActivity implements CartAction {
     ViewPager product_image_viewPager;
     SliderAdapter adapter;
     ImageView cart_plus,cart_minus;
-    TextView cart_number,product_name_bottom;
+    RelativeLayout to_pay;
+    TextView cart_number,product_name_bottom,product_title,detail;
     private TextView[] dots;
     CoordinatorLayout productCoordinator;
     LinearLayout mDotLayout;
@@ -46,6 +48,7 @@ public class ProductActivity extends AppCompatActivity implements CartAction {
     Product product;
     BottomSheetLayout bottomSheet;
     View bottomView;
+
     LinearLayout add_to_wish_list,add_to_cart;
     private CartController cartController;
 
@@ -53,11 +56,12 @@ public class ProductActivity extends AppCompatActivity implements CartAction {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            Window w = getWindow();
-            w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-        }
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//            Window w = getWindow();
+//            w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+//        }
+//        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 
         cartController = new CartController(getApplicationContext(), this);
         product = GeneralUtility.getProductFromString(getIntent().getStringExtra(Constants.PRODUCT));
@@ -67,9 +71,17 @@ public class ProductActivity extends AppCompatActivity implements CartAction {
         productCoordinator = findViewById(R.id.productCoordinator); 
         add_to_wish_list=findViewById(R.id.add_to_wish_list);
         product_image_viewPager=(ViewPager) findViewById(R.id.product_image_viewPager);
-        adapter= new SliderAdapter(getApplicationContext());
+        product_title = findViewById(R.id.product_title);
+        to_pay = findViewById(R.id.to_pay);
+        adapter= new SliderAdapter(getApplicationContext(), product);
         add_to_cart=findViewById(R.id.add_to_cart);
         mDotLayout=(LinearLayout) findViewById(R.id.mDotLayout);
+        detail = findViewById(R.id.detail);
+
+        product_title.setText(product.getmItemName());
+        detail.setText(product.getmDescription());
+
+
         addDotIndicators(0);
 
         product_image_viewPager.setAdapter(adapter);
@@ -111,6 +123,7 @@ public class ProductActivity extends AppCompatActivity implements CartAction {
                 cart.setDiscount(product.getmDiscount());
                 cart.setPrice(product.getmPrice());
                 cart.setQuantity(count);
+                cart.setFlag(1);
                 cartController.addToCart(cart);
                 bottomSheet.dismissSheet();
             }
@@ -119,6 +132,13 @@ public class ProductActivity extends AppCompatActivity implements CartAction {
             @Override
             public void onClick(View v) {
                 bottomSheet.showWithSheetView(bottomView);
+
+            }
+        });
+
+        to_pay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
             }
         });
@@ -167,13 +187,13 @@ public class ProductActivity extends AppCompatActivity implements CartAction {
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
         if (hasFocus) {
-            getWindow().getDecorView().setSystemUiVisibility(
-                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                            | View.SYSTEM_UI_FLAG_FULLSCREEN
-                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+//            getWindow().getDecorView().setSystemUiVisibility(
+//                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+//                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+//                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+//                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+//                            | View.SYSTEM_UI_FLAG_FULLSCREEN
+//                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         }
     }
 
@@ -206,6 +226,11 @@ ViewPager.OnPageChangeListener viewListner = new ViewPager.OnPageChangeListener(
 
     @Override
     public void onRemoveCartItem() {
+
+    }
+
+    @Override
+    public void onResultSavedList(List<Cart> savedList) {
 
     }
 

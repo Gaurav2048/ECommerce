@@ -40,17 +40,249 @@
         android:id="@+id/yourCart"
 
         />
+<android.support.v4.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/yourCart"
+    android:layout_above="@+id/total_layout"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
 
-
+    >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/yourCart"
         android:id="@+id/CartRecyclr"
-        android:layout_marginLeft="15dp"
-        android:layout_above="@+id/total_layout"
-        android:layout_marginRight="15dp"
         />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#fff"
+        android:layout_marginTop="20dp"
+        android:elevation="5dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Price detail"
+            android:textAllCaps="true"
+            android:fontFamily="@font/domineregular"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:textSize="15sp"
+            android:layout_marginLeft="10dp"
+
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="#cbcbcb"
+
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Price (1 item)"
+                android:gravity="left"
+                android:textColor="#F2B3B0B0"
+                android:fontFamily="@font/domineregular"
+                android:textSize="15sp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="USD 200"
+                android:gravity="right"
+                android:textColor="#F2B3B0B0"
+                android:fontFamily="@font/domineregular"
+                android:textSize="15sp"
+
+
+                />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Delivery"
+                android:gravity="left"
+                android:textColor="#F2B3B0B0"
+                android:fontFamily="@font/domineregular"
+                android:textSize="15sp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Free"
+                android:gravity="right"
+                android:textColor="#0f0"
+                android:fontFamily="@font/domineregular"
+                android:textSize="15sp"
+
+
+                />
+
+
+        </LinearLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:src="@drawable/dotted"
+            android:layerType="software"
+            android:layout_marginBottom="10dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Amount Payable "
+                android:gravity="left"
+                android:textColor="#000"
+                android:fontFamily="@font/domineregular"
+                android:textSize="16sp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="600.00"
+                android:gravity="right"
+                android:textColor="#000"
+                android:fontFamily="@font/domineregular"
+                android:textSize="16sp"
+
+
+                />
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="#919090"
+            android:layout_marginTop="10dp"
+
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You will save USD 2440 in this order"
+            android:textColor="#4D684D"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:textSize="16sp"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/domineregular"
+
+
+            />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gunjan Kalita"
+            android:textColor="#000"
+            android:textSize="15sp"
+            android:id="@+id/name"
+
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="cuisine_string Appetizers, Asian, Assamese, Bakery, Bbq, Bengali, beverages, Biryani, biryani spl , bread, burger, Cafe, Chicken, chilli chicken, Chinese, chowmein, coffee, Coffee and Tea, combos, Continental, Dessert"
+            android:textColor="#000"
+            android:textSize="15sp"
+            android:id="@+id/address"
+            android:layout_below="@+id/name"
+            android:layout_marginTop="5dp"
+            android:maxLength="70"
+            android:layout_marginBottom="5dp"
+
+
+
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/address"
+            android:padding="0dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/tab_background_selected"
+            android:textColor="#fff"
+            android:text="Change or add address"
+
+            />
+    </RelativeLayout>
+
+
+
+<android.support.v7.widget.RecyclerView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/forlaterRecyclerview"
+    android:layout_marginTop="10dp"
+
+    />
+
+</LinearLayout>
+</android.support.v4.widget.NestedScrollView>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -90,6 +322,7 @@
             android:text="Continue"
             android:textAllCaps="false"
             android:paddingRight="30dp"
+            android:id="@+id/payment_action"
             android:paddingLeft="30dp"
             android:textColor="#fff"
             android:fontFamily="@font/playfairdisplayregular"
