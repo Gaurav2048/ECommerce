@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.example.ecommerce.Models.DataTypes.Login;
 import com.example.ecommerce.Models.DataTypes.Register;
+import com.example.ecommerce.Models.DataTypes.RegisterResponse;
 import com.example.ecommerce.Models.DataTypes.User;
 
 
@@ -34,7 +35,7 @@ public interface userInterface {
 
 
     @POST("auth/signup")
-    Call<Object> register(@Header("Content-type")String header, @Body Register register);
+    Call<RegisterResponse> register(@Header("Content-type")String header, @Body Register register);
 
 
 }

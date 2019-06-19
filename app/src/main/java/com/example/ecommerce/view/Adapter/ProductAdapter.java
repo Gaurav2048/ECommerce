@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -20,6 +21,7 @@ import com.example.ecommerce.Models.Interface.Actions.CategoryActions;
 import com.example.ecommerce.Models.Interface.Actions.ProductActions;
 import com.example.ecommerce.Models.Interface.UI_Helpers.ClickListner;
 import com.example.ecommerce.Models.Sharedpreferences.AppPreferences;
+import com.example.ecommerce.Models.Utilities.Constants;
 import com.example.ecommerce.Models.Utilities.Utility;
 import com.example.ecommerce.R;
 import com.example.ecommerce.view.Utility.GeneralUtility;
@@ -130,17 +132,20 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.viewHold
         ImageView product_image;
         ShimmerFrameLayout shimmerLayout1;
         RelativeLayout viewLayout;
+        CheckBox add_to_wish_list;
         TextView product_text,price;
         TextView priceOrg;
         public viewHolder(@NonNull View itemView) {
             super(itemView);
             product_image=(ImageView) itemView.findViewById(R.id.product_image);
             priceOrg=(TextView) itemView.findViewById(R.id.priceOrg);
+            add_to_wish_list = itemView.findViewById(R.id.add_to_wish_list);
             shimmerLayout1=(ShimmerFrameLayout) itemView.findViewById(R.id.shimmerLayout1);
             product_text = itemView.findViewById(R.id.product_text);
             price = itemView.findViewById(R.id.price);
             viewLayout=itemView.findViewById(R.id.viewLayout);
             itemView.setOnClickListener(this);
+            add_to_wish_list.setOnClickListener(this);
         }
 
         @Override
@@ -149,7 +154,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.viewHold
                 int position = getAdapterPosition();
                 Product product = productList.get(position);
                 String data = GeneralUtility.getStringFromObject(product);
-                clickListner.onClickPosition(v, "product", data);
+                if (v == add_to_wish_list) {
+                    Utility.buttonAnimation(v);
+                    clickListner.onClickPosition(v, Constants.TAG_ADD_TO_WISHLIST, data);
+                } else if (v == itemView) {
+                    if (!isSchimming) {
+                        clickListner.onClickPosition(v, "product", data);
+                    }
+                }
             }
          }
     }

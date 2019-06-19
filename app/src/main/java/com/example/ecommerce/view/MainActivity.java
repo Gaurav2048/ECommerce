@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
@@ -92,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements ClickListner, Pay
         bottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
             @Override
             public boolean onTabSelected(int position, boolean wasSelected) {
-                  trackList.add(position);
+                  addTobackStack(position);
                   viewPager.setCurrentItem(position,false);
                   return true;
             }
@@ -204,30 +205,6 @@ public class MainActivity extends AppCompatActivity implements ClickListner, Pay
 
         viewPager.setAdapter(pagerAdapter);
 
-
-
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int i, float v, int i1) {
-
-            }
-
-            @Override
-            public void onPageSelected(int i) {
-
-                Log.e( "onPageSelected: ",trackList.size()+" " );
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int i) {
-
-            }
-        });
-
-
-
-
-
     }
 
     public void setDataInterface(DataInterface Interface){
@@ -276,8 +253,10 @@ public class MainActivity extends AppCompatActivity implements ClickListner, Pay
 
     @Override
     public void onClickPosition(View view, String tag,  String data) {
+       int position = 0;
         if(tag.equals(Constants.TAG_CAMERA)){
             trackList.add(5);
+            position = 5;
             Caterogy = Utility.getCategoryObject(data);
             viewPager.setCurrentItem(5,false);
         }else if (tag.equals(Constants.TAG_PRODUCT_DETAIL)){
@@ -285,31 +264,39 @@ public class MainActivity extends AppCompatActivity implements ClickListner, Pay
             intent.putExtra(Constants.PRODUCT,data);
             startActivity(intent);
         }else if(tag.equals(Constants.TAG_MY_ORDER)){
+            position = 5;
             trackList.add(6);
             viewPager.setCurrentItem(6, false);
         }else if (tag.equals(Constants.TAG_ADDRESS)){
+            position = 7;
             trackList.add(7);
             viewPager.setCurrentItem(7, false);
         }else if(tag.equals(Constants.TAG_LEGAL)){
+            position = 8;
             trackList.add(8);
             viewPager.setCurrentItem(8, false);
         }else if (tag.equals(Constants.TAG_EDIT_ADDA_ADDRESS)){
+            position = 9;
             data="passed some";
             trackList.add(9);
             viewPager.setCurrentItem(9, false);
             dataInterface.onReceiveData(data);
         }else if(tag.equals(Constants.TAG_LEGAL_INFO)){
+            position = 10;
             trackList.add(10);
             viewPager.setCurrentItem(10, false);
             dataInterface.onReceiveData("legal detail id ");
         }else if (tag.equals(Constants.TAG_ORDER_ITEM_DETAIL)){
+            position = 11;
             trackList.add(11);
             viewPager.setCurrentItem(11, false);
             dataInterface.onReceiveData("");
         }else if(tag.equals(Constants.TAG_ACCOUNT_INFO)){
+            position = 12;
             trackList.add(12);
             viewPager.setCurrentItem(12, false);
         }else if(tag.equals(Constants.TAG_PRODUCT_VIEW)){
+            position = 13;
             trackList.add(13);
             viewPager.setCurrentItem(13, false);
         }else if(tag.equals(Constants.TAG_ADD_TO_WISHLIST)){
@@ -317,8 +304,43 @@ public class MainActivity extends AppCompatActivity implements ClickListner, Pay
         }else if(tag.equals(Constants.TAG_ACTION_SEARCH)){
            this.phrase = data;
         }else if(tag.equals(Constants.TAG_PAYMENT_ACTION)){
-            startPayment();
+            startPayment(data);
+        }else if(tag.equals(Constants.TAG_SEARCH_TWO)){
+            viewPager.setCurrentItem(1);
+            bottomNavigation.getItem(bottomNavigation.getCurrentItem()).setColorRes(R.color.gray);
+            bottomNavigation.getItem(1).setColorRes(R.color.mellon_rd);
         }
+        addTobackStack(position);
+    }
+
+    private void addTobackStack(int position) {
+
+        if(trackList.size()==0){
+            trackList.add(position);
+        }else {
+            int toClearAbove = -3;
+            for(int i=0; i<trackList.size(); i++){
+                if(trackList.get(i) == position){
+                    toClearAbove = i;
+                    break;
+                }
+            }
+
+            if(toClearAbove < 0)
+            {
+                trackList.add(position);
+                Log.e( "addTobackStack: ",trackList.size()+" " +toClearAbove );
+
+            }else {
+               ArrayList<Integer> list = new ArrayList<>();
+                list.addAll(trackList.subList(0, toClearAbove));
+                trackList.clear();
+                trackList.addAll(list);
+                Log.e( "addTobackStack: ",trackList.size()+" "+toClearAbove );
+            }
+
+        }
+
     }
 
     private void addToWishList(String data) {
@@ -327,12 +349,29 @@ public class MainActivity extends AppCompatActivity implements ClickListner, Pay
         List<Product> wishList = Utility.getWishList(appPreferences.getWishList());
         if(wishList!=null)
         {
-            if(wishList.contains(product)){
+            int  position = -300;
 
-            }else {
-                wishList.add(product);
+            for(int i =0;i<wishList.size();i++){
+                if(product.getId().equals(wishList.get(i).getId())) {
+                    position = i;
+                    break;
+                }
             }
+            if(position<0){
+                wishList.add(product);
+            }else {
+                wishList.remove(position);
+            }
+
+//            if(wishList.contains(product)){
+//                Log.e( "addToWishList: ","product removed" );
+//                wishList.remove(product);
+//            }else {
+//                Log.e( "addToWishList: ","product added" );
+//                wishList.add(product);
+//            }
         }else {
+            Log.e( "addToWishList: ","product new added" );
             wishList = new ArrayList<>();
             wishList.add(product);
         }
@@ -342,7 +381,9 @@ public class MainActivity extends AppCompatActivity implements ClickListner, Pay
 
     }
 
-    public void startPayment() {
+
+
+    public void startPayment(String amount) {
         /**
          * Instantiate Checkout
          */
@@ -384,7 +425,7 @@ public class MainActivity extends AppCompatActivity implements ClickListner, Pay
              * Amount is always passed in PAISE
              * Eg: "500" = Rs 5.00
              */
-            options.put("amount", "300");
+            options.put("amount", amount);
 
             checkout.open(activity, options);
         } catch(Exception e) {

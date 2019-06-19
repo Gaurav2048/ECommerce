@@ -11,12 +11,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.ecommerce.Models.DataTypes.category;
 import com.example.ecommerce.view.Adapter.TabAdapter;
 import com.example.ecommerce.view.Fragments.SubFragments.AllFragment;
 import com.example.ecommerce.R;
 import com.example.ecommerce.view.Fragments.SubFragments.ExclusiveFragment;
 import com.example.ecommerce.view.Fragments.SubFragments.OnSaleFragment;
 import com.example.ecommerce.view.Fragments.SubFragments.PopularFragment;
+import com.example.ecommerce.view.MainActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,6 +28,7 @@ public class DetailFragment extends Fragment {
     TabLayout tablayout;
     ViewPager viewPager;
     TabAdapter tabAdapter;
+    TextView category_name;
 
     public DetailFragment() {
         // Required empty public constructor
@@ -39,6 +42,7 @@ public class DetailFragment extends Fragment {
         View view= inflater.inflate(R.layout.fragment_detail, container, false);
         tablayout=view.findViewById(R.id.textV);
         viewPager=view.findViewById(R.id.viewPager);
+        category_name= view.findViewById(R.id.category_name);
 
         tabAdapter = new TabAdapter(getChildFragmentManager());
         tabAdapter.addFragment(new AllFragment(), "  All  ");
@@ -49,6 +53,12 @@ public class DetailFragment extends Fragment {
         viewPager.setAdapter(tabAdapter);
 
         tablayout.setupWithViewPager(viewPager);
+
+        category category = ((MainActivity)getActivity()).getCaterogy();
+        if(category!=null){{
+            category_name.setText(category.getmCategoryName());
+        }}
+
         changeTabsFont();
         return  view;
 

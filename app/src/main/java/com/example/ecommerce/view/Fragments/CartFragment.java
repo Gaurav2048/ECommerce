@@ -43,7 +43,9 @@ public class CartFragment extends Fragment implements
     CoordinatorLayout coordinatorLayout;
     List<Cart> cartList;
     ClickListner clickListner;
+    SavedAdapter savedAdapter;
     CartAdapter adapter;
+    TextView price_view, total_pay,check_out_pay,discount_view;
     Button payment_action;
     TextView cartValue;
     CartController cartController;
@@ -71,7 +73,7 @@ public class CartFragment extends Fragment implements
         payment_action.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clickListner.onClickPosition(v, Constants.TAG_PAYMENT_ACTION, "");
+                clickListner.onClickPosition(v, Constants.TAG_PAYMENT_ACTION, String.valueOf(discount_total*100));
             }
         });
 
@@ -91,6 +93,11 @@ public class CartFragment extends Fragment implements
         cartValue = view.findViewById(R.id.cartValue);
         forlaterRecyclerview = view.findViewById(R.id.forlaterRecyclerview);
         payment_action = view.findViewById(R.id.payment_action);
+        price_view=view.findViewById(R.id.price_view);
+        total_pay=view.findViewById(R.id.total_pay);
+        check_out_pay = view.findViewById(R.id.check_out_pay);
+        discount_view=view.findViewById(R.id.discount_view);
+
     }
 
     @Override
@@ -133,14 +140,24 @@ public class CartFragment extends Fragment implements
     }
 
     int Total = 0;
+    int discount_total = 0;
 
     private void calculateCartValue() {
         for (int i = 0; i < cartList.size(); i++) {
             int Quantity = cartList.get(i).getQuantity();
             int Price = Integer.parseInt(cartList.get(i).getPrice());
+            int discount = Integer.parseInt(cartList.get(i).getDiscount());
             Total += Quantity * Price;
+
+            int discounted_amt = (int) (Price*(1-(discount/100.0f)));
+            discount_total += discounted_amt;
         }
-        cartValue.setText("$" + Total);
+        cartValue.setText("$" + discount_total);
+        total_pay.setText("USD "+discount_total);
+        check_out_pay.setText(String.valueOf(discount_total));
+        int discount = Total-discount_total;
+        discount_view.setText("You will save USD "+discount+" in this order");
+
     }
 
     @Override
@@ -151,7 +168,8 @@ public class CartFragment extends Fragment implements
     @Override
     public void onResultSavedList(List<Cart> savedList) {
         if (savedList != null) {
-            forlaterRecyclerview.setAdapter(new SavedAdapter(getContext(), savedList, this));
+            savedAdapter = new SavedAdapter(getContext(), savedList, this);
+            forlaterRecyclerview.setAdapter(savedAdapter);
         } else {
             forlaterRecyclerview.setVisibility(View.GONE);
         }
@@ -165,6 +183,12 @@ public class CartFragment extends Fragment implements
     @Override
     public void updateItem(Cart cart) {
         Log.e("updateItem: ", cart.getFlag() + " ");
+        cartList.clear();
+        adapter.removeAllItem();
+        savedAdapter.clearList();
+        cartList.clear();
+        Total = 0;
+        discount_total = 0 ;
         cartController.updateItem(cart);
     }
 }

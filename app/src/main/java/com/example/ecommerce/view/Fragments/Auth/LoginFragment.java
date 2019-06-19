@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.ecommerce.Controllers.UserController;
 import com.example.ecommerce.Models.DataTypes.Register;
+import com.example.ecommerce.Models.DataTypes.RegisterResponse;
 import com.example.ecommerce.Models.DataTypes.User;
 import com.example.ecommerce.Models.Interface.Actions.UserActions;
 import com.example.ecommerce.Models.Interface.UI_Helpers.AuthInterface;
@@ -122,7 +123,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Use
 
 
     @Override
-    public void registerSuccess(Object user) {
-        Log.e( "registerSuccess: ",user +" " );
+    public void registerResponse(RegisterResponse registerResponse) {
+
     }
 }

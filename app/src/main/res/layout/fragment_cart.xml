@@ -96,29 +96,30 @@
             android:layout_marginTop="10dp"
 
             >
+
             <TextView
+                android:id="@+id/price_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Price (1 item)"
+                android:fontFamily="@font/domineregular"
                 android:gravity="left"
+                android:text="Price (1 item)"
                 android:textColor="#F2B3B0B0"
-                android:fontFamily="@font/domineregular"
-                android:textSize="15sp"
-                />
+                android:textSize="15sp" />
 
             <TextView
+                android:id="@+id/total_pay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="USD 200"
-                android:gravity="right"
-                android:textColor="#F2B3B0B0"
                 android:fontFamily="@font/domineregular"
-                android:textSize="15sp"
+                android:gravity="right"
+                android:text="USD 200"
+                android:textColor="#F2B3B0B0"
 
 
-                />
+                android:textSize="15sp" />
 
 
         </LinearLayout>
@@ -185,17 +186,17 @@
                 />
 
             <TextView
+                android:id="@+id/check_out_pay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="600.00"
-                android:gravity="right"
-                android:textColor="#000"
                 android:fontFamily="@font/domineregular"
-                android:textSize="16sp"
+                android:gravity="right"
+                android:text="600.00"
+                android:textColor="#000"
 
 
-                />
+                android:textSize="16sp" />
 
 
         </LinearLayout>
@@ -207,19 +208,20 @@
             android:layout_marginTop="10dp"
 
             />
+
         <TextView
+            android:id="@+id/discount_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="You will save USD 2440 in this order"
-            android:textColor="#4D684D"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:textSize="16sp"
-            android:layout_marginLeft="10dp"
             android:fontFamily="@font/domineregular"
+            android:text="You will save USD 2440 in this order"
+            android:textColor="#4D684D"
 
 
-            />
+            android:textSize="16sp" />
 
     </LinearLayout>
 

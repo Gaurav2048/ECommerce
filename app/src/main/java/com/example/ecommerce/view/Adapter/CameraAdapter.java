@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -16,7 +17,9 @@ import com.example.ecommerce.Controllers.ProductController;
 import com.example.ecommerce.Models.DataTypes.Product;
 import com.example.ecommerce.Models.Interface.Actions.ProductActions;
 import com.example.ecommerce.Models.Interface.UI_Helpers.ClickListner;
+import com.example.ecommerce.Models.Sharedpreferences.AppPreferences;
 import com.example.ecommerce.Models.Utilities.Constants;
+import com.example.ecommerce.Models.Utilities.Utility;
 import com.example.ecommerce.R;
 import com.example.ecommerce.view.Utility.GeneralUtility;
 import com.facebook.shimmer.ShimmerFrameLayout;
@@ -31,7 +34,7 @@ public class CameraAdapter extends RecyclerView.Adapter<CameraAdapter.viewHolder
     Context context;
     ClickListner clickListner;
     List<Product> productList;
-    ProductController productController;
+    List<Product> wishList ;
     boolean isSchimming = false;
 
     public CameraAdapter(@NonNull Context context, ClickListner clickListner) {
@@ -39,7 +42,7 @@ public class CameraAdapter extends RecyclerView.Adapter<CameraAdapter.viewHolder
         this.clickListner = clickListner;
         productList = new ArrayList<>();
         new ProductController(this).get_all_new_products("1", "22");
-
+        wishList = Utility.getWishList(new AppPreferences(context).getWishList());
 
     }
 
@@ -71,6 +74,9 @@ public class CameraAdapter extends RecyclerView.Adapter<CameraAdapter.viewHolder
             } catch (Exception e) {
 
             }
+
+            viewHolder.isAddedToWishList(viewHolder.add_to_wish_list);
+
 
             Picasso.get().load(product.getmImage1()).into(viewHolder.product_image);
             viewHolder.priceOrg.setPaintFlags(viewHolder.priceOrg.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
@@ -118,7 +124,8 @@ public class CameraAdapter extends RecyclerView.Adapter<CameraAdapter.viewHolder
     }
 
     public class viewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        ImageView product_image, add_to_wish_list;
+        ImageView product_image;
+        CheckBox add_to_wish_list;
         ShimmerFrameLayout shimmerLayout1;
         RelativeLayout viewLayout;
         TextView product_text, price;
@@ -137,15 +144,31 @@ public class CameraAdapter extends RecyclerView.Adapter<CameraAdapter.viewHolder
             add_to_wish_list.setOnClickListener(this);
         }
 
+        public void isAddedToWishList(CheckBox checkBox){
+           if(wishList!=null) {
+               String itemId = productList.get(getAdapterPosition()).getId();
+               for (int i = 0; i < wishList.size(); i++) {
+                   if (wishList.get(i).getId().equals(itemId)) {
+                       checkBox.setChecked(true);
+                       break;
+                   } else {
+                       checkBox.setChecked(false);
+                   }
+               }
+           }
+        }
+
         @Override
         public void onClick(View v) {
-            int position = getAdapterPosition();
-            Product product = productList.get(position);
-            String data = GeneralUtility.getStringFromObject(product);
-            if (v == add_to_wish_list) {
-                clickListner.onClickPosition(v, Constants.TAG_ADD_TO_WISHLIST, data);
-            } else if (v == itemView) {
-                if (!isSchimming) {
+            if (!isSchimming)
+            {
+                int position = getAdapterPosition();
+                Product product = productList.get(position);
+                String data = GeneralUtility.getStringFromObject(product);
+                if (v == add_to_wish_list) {
+                    Utility.buttonAnimation(v);
+                    clickListner.onClickPosition(v, Constants.TAG_ADD_TO_WISHLIST, data);
+                } else if (v == itemView) {
                     clickListner.onClickPosition(v, "product", data);
                 }
             }

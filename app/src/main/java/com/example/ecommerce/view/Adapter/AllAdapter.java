@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.ecommerce.Controllers.ProductController;
 import com.example.ecommerce.Models.DataTypes.Product;
+import com.example.ecommerce.Models.DataTypes.category;
 import com.example.ecommerce.Models.Interface.Actions.ProductActions;
 import com.example.ecommerce.Models.Interface.UI_Helpers.ClickListner;
 import com.example.ecommerce.Models.Utilities.Constants;
@@ -51,35 +52,42 @@ public class AllAdapter extends RecyclerView.Adapter<AllAdapter.viewHolder> impl
             viewHolder.shimmerFrameLayout.setVisibility(View.VISIBLE);
             viewHolder.relativeLayout.setVisibility(View.GONE);
         }else {
-            Product product = productList.get(i);
-            viewHolder.shimmerFrameLayout.stopShimmer();
-            viewHolder.shimmerFrameLayout.setVisibility(View.GONE);
-            viewHolder.relativeLayout.setVisibility(View.VISIBLE);
-            viewHolder.product_name.setText(product.getmItemName());
-            viewHolder.priceOrg_.setText(product.getmPrice());
-            try{
-                int amount = Integer.parseInt(product.getmPrice());
-                int discount = Integer.parseInt(product.getmDiscount());
-                float applicableError = amount*(1-(discount/100.0f));
-                viewHolder.price_.setText(String.valueOf(Math.floor(applicableError)));
-            }catch (Exception e){
+            if (productList.size() > 0) {
+                Product product = productList.get(i);
+                viewHolder.shimmerFrameLayout.stopShimmer();
+                viewHolder.shimmerFrameLayout.setVisibility(View.GONE);
+                viewHolder.relativeLayout.setVisibility(View.VISIBLE);
+                viewHolder.product_name.setText(product.getmItemName());
+                viewHolder.priceOrg_.setText(product.getmPrice());
+                try {
+                    int amount = Integer.parseInt(product.getmPrice());
+                    int discount = Integer.parseInt(product.getmDiscount());
+                    float applicableError = amount * (1 - (discount / 100.0f));
+                    viewHolder.price_.setText(String.valueOf(Math.floor(applicableError)));
+                } catch (Exception e) {
 
+                }
+                Picasso.get().load(product.getmImage1()).into(viewHolder.im_one);
+                Picasso.get().load(product.getmImage2()).into(viewHolder.im_twwo);
+                Picasso.get().load(product.getmImage3()).into(viewHolder.im_three);
             }
-            Picasso.get().load(product.getmImage1()).into(viewHolder.im_one);
-            Picasso.get().load(product.getmImage2()).into(viewHolder.im_twwo);
-            Picasso.get().load(product.getmImage3()).into(viewHolder.im_three);
         }
-
     }
 
 
+
+
     public void makeDatabaseCall(){
-        new ProductController(this).get_all_new_products_by_category("2","0", ((MainActivity)context).getCaterogy().getmCategoryid());
+        category category = ((MainActivity)context).getCaterogy();
+        if(category!=null)
+        {
+            new ProductController(this).get_all_new_products_by_category("2","0", category.getmCategoryid());
+        }
     }
 
     @Override
     public int getItemCount() {
-        if(productList.size()==0){
+        if(productList.size()==0 || productList == null){
             return 10;
         }else {
           return   productList.size();

@@ -85,16 +85,16 @@
             />
 
         <TextView
+            android:id="@+id/category_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Gadgets"
-            android:fontFamily="@font/playfairdisplayregular"
-            android:textColor="#000"
-            android:layout_toRightOf="@+id/img_section"
-            android:textSize="22sp"
             android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/img_section"
+            android:fontFamily="@font/playfairdisplayregular"
+            android:text="Gadgets"
+            android:textColor="#000"
 
-            />
+            android:textSize="22sp" />
 
 
 

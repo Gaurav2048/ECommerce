@@ -44,6 +44,14 @@ public class CartAdapter extends RecyclerView .Adapter<CartAdapter.viewHolder>{
         Picasso.get().load(cart.getImage()).into(viewHolder.imageView);
         viewHolder.name_product.setText(cart.getProductName());
         viewHolder.price.setText("$"+cart.getPrice());
+        try{
+            int price = Integer.parseInt(cart.getPrice());
+            int discount = Integer.parseInt(cart.getDiscount());
+            double amount = price*(1-(discount/100.0f));
+            viewHolder.price_on_discount.setText(String.valueOf(Math.floor(amount)));
+        }catch (Exception e){
+
+        }
     }
 
     public List<Cart> getDataSet(){
@@ -73,6 +81,11 @@ public class CartAdapter extends RecyclerView .Adapter<CartAdapter.viewHolder>{
         notifyItemInserted(position);
     }
 
+    public void removeAllItem(){
+        cartList.clear();
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getItemCount() {
         return cartList.size();
@@ -83,7 +96,7 @@ public class CartAdapter extends RecyclerView .Adapter<CartAdapter.viewHolder>{
         public RelativeLayout viewBackground, viewForeground;
         ImageView imageView;
         Spinner spinner;
-        TextView name_product,price,save_for_later,remove;
+        TextView name_product,price,save_for_later,remove,price_on_discount;
         public viewHolder(@NonNull View itemView) {
             super(itemView);
             imageView=itemView.findViewById(R.id.product_cart_image);
@@ -92,6 +105,7 @@ public class CartAdapter extends RecyclerView .Adapter<CartAdapter.viewHolder>{
             name_product=itemView.findViewById(R.id.name_product);
             price=itemView.findViewById(R.id.price);
             spinner=itemView.findViewById(R.id.spinner);
+            price_on_discount=itemView.findViewById(R.id.price_on_discount);
             save_for_later=itemView.findViewById(R.id.save_for_later);
             remove=itemView.findViewById(R.id.remove);
 

@@ -52,6 +52,11 @@ public class SavedAdapter extends RecyclerView.Adapter<SavedAdapter.viewHolder> 
 
     }
 
+    public void clearList(){
+        cartList.clear();
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getItemCount() {
         return cartList.size();

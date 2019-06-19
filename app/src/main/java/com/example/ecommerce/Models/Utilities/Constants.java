@@ -25,6 +25,7 @@ public class Constants {
     // oertation tags
     public static final String TAG_ADD_TO_WISHLIST = "add_to_wishlist";
     public static final String TAG_ACTION_SEARCH = "action_search";
+    public static final String TAG_SEARCH_TWO = "serch_two";
 
 
 

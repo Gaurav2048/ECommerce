@@ -1,5 +1,11 @@
 package com.example.ecommerce.Models.Utilities;
 
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
+import android.animation.ValueAnimator;
+import android.view.View;
+import android.view.animation.OvershootInterpolator;
+
 import com.example.ecommerce.Models.DataTypes.Product;
 import com.example.ecommerce.Models.DataTypes.User;
 import com.example.ecommerce.Models.DataTypes.category;
@@ -70,6 +76,24 @@ public class Utility {
 
     public static String getHistoryJson(List<String> history){
         return  new Gson().toJson(history);
+    }
+
+    public static void buttonAnimation(View view){
+
+
+        PropertyValuesHolder animation = PropertyValuesHolder.ofFloat(View.SCALE_X, 1f, 1.15f);
+        PropertyValuesHolder animation1 = PropertyValuesHolder.ofFloat(View.SCALE_Y, 1f, 1.15f);
+        PropertyValuesHolder animation3 = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            animation3 = PropertyValuesHolder.ofFloat(View.TRANSLATION_Z, 1f, 1.15f);
+        }
+
+        ObjectAnimator animator = ObjectAnimator.ofPropertyValuesHolder(view, animation, animation1, animation3);
+        animator.setRepeatCount(1);
+        animator.setRepeatMode(ValueAnimator.REVERSE);
+        animator.setInterpolator(new OvershootInterpolator());
+        animator.setDuration(250);
+        animator.start();
     }
 
 }

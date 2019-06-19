@@ -112,7 +112,10 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.viewHo
 
         @Override
         public void onClick(View v) {
-            clickListner.onClickPosition(v, Constants.TAG_CAMERA,Utility.getCategoryString(categoryList.get(getAdapterPosition())));
+           if(!isShimming)
+           {
+               clickListner.onClickPosition(v, Constants.TAG_CAMERA,Utility.getCategoryString(categoryList.get(getAdapterPosition())));
+           }
         }
     }
 

@@ -10,10 +10,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.ecommerce.Controllers.ProductController;
 import com.example.ecommerce.Models.DataTypes.Product;
 import com.example.ecommerce.Models.Interface.Actions.ProductActions;
+import com.example.ecommerce.Models.Utilities.Constants;
 import com.example.ecommerce.view.Adapter.HomeAdapter;
 import com.example.ecommerce.Models.Interface.UI_Helpers.ClickListner;
 import com.example.ecommerce.R;
@@ -28,6 +30,7 @@ public class ForYouFragment extends Fragment implements ProductActions {
     private static final String TAG = "ForYouFragment";
     RecyclerView homeRecycerView;
     ClickListner clickListner;
+    TextView searchWidget;
     ProductActions productActions;
     public ForYouFragment() {
         // Required empty public constructor
@@ -40,8 +43,18 @@ public class ForYouFragment extends Fragment implements ProductActions {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_for_you, container, false);
         homeRecycerView=(RecyclerView) view.findViewById(R.id.homeRecyclerview);
+        searchWidget = view.findViewById(R.id.searchWidget);
         homeRecycerView.setLayoutManager(new LinearLayoutManager(getContext()));
         homeRecycerView.setAdapter(new HomeAdapter(getContext(),clickListner));
+
+
+        searchWidget.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickListner.onClickPosition(v, Constants.TAG_SEARCH_TWO, "");
+            }
+        });
+
         return view;
     }
 

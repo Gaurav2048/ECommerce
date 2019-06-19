@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.example.ecommerce.Models.DataTypes.Login;
 import com.example.ecommerce.Models.DataTypes.Register;
+import com.example.ecommerce.Models.DataTypes.RegisterResponse;
 import com.example.ecommerce.Models.DataTypes.User;
 import com.example.ecommerce.Models.Interface.Actions.UserActions;
 import com.example.ecommerce.Models.Interface.api.userInterface;
@@ -62,15 +63,15 @@ public class UserController {
 
 
     public  void register(Register register){
-        Call<Object> call = mUserInterface.register("application/json",register);
-        call.enqueue(new Callback<Object>() {
+        Call<RegisterResponse> call = mUserInterface.register("application/json",register);
+        call.enqueue(new Callback<RegisterResponse>() {
             @Override
-            public void onResponse(Call<Object> call, Response<Object> response) {
-                userActions.registerSuccess(response.body());
+            public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
+                userActions.registerResponse(response.body());
             }
 
             @Override
-            public void onFailure(Call<Object> call, Throwable t) {
+            public void onFailure(Call<RegisterResponse> call, Throwable t) {
                 userActions.onError(t);
             }
         });

@@ -1,7 +1,9 @@
 package com.example.ecommerce.view.Fragments.Auth;
 
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -14,9 +16,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ecommerce.Controllers.UserController;
 import com.example.ecommerce.Models.DataTypes.Register;
+import com.example.ecommerce.Models.DataTypes.RegisterResponse;
 import com.example.ecommerce.Models.DataTypes.User;
 import com.example.ecommerce.Models.Interface.Actions.UserActions;
 import com.example.ecommerce.Models.Interface.UI_Helpers.AuthInterface;
@@ -93,6 +97,13 @@ public class RegisterFragment extends Fragment implements UserActions {
                             password.getText().toString(),
                             "default.jpg"
                     ));
+
+                    first_name.setText("");
+                    last_name.setText("");
+                    email.setText("");
+                    password.setText("");
+                    cnf_password.setText("");
+
 
                 }else{
                     message_dialog.setVisibility(View.VISIBLE);
@@ -321,21 +332,38 @@ public class RegisterFragment extends Fragment implements UserActions {
     }
 
     @Override
-    public void registerSuccess(Object user) {
+    public void registerResponse(RegisterResponse registerResponse) {
 
-        Log.e( "registerSuccess: ",new Gson().toJson(user.toString()) );
+        if(registerResponse == null){
+            showlertDialog();
+        }else {
+            if(registerResponse.getSuccess().equals(true)){
+                authInterface.onSwipe();
 
-         //        try {
-//            JSONObject jsonObject = new JSONObject();
-//            boolean success = jsonObject.getBoolean("success");
-//            if(success){
-//                    authInterface.onSuccessOperation("register");
-//            }else{
-//                    authInterface.onSuccessOperation("registerFailed");
-//            }
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-        Log.e( "registerSuccess: ",String.valueOf(user) +" " );
+                Toast.makeText(getContext(), registerResponse.getMessage()+" ", Toast.LENGTH_SHORT).show();
+            }else {
+                showlertDialog();
+            }
+        }
+
+
+    }
+
+    private void showlertDialog() {
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(getContext());
+        builder1.setMessage("Unable to register");
+        builder1.setCancelable(true);
+
+        builder1.setPositiveButton(
+                "Okay",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
     }
 }

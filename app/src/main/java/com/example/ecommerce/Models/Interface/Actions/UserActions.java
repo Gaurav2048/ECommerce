@@ -1,5 +1,6 @@
 package com.example.ecommerce.Models.Interface.Actions;
 
+import com.example.ecommerce.Models.DataTypes.RegisterResponse;
 import com.example.ecommerce.Models.DataTypes.User;
 
 import org.json.JSONObject;
@@ -12,7 +13,7 @@ public interface UserActions {
 
     void onStartOperation();
 
-    void registerSuccess(Object user);
+    void registerResponse(RegisterResponse registerResponse);
 
 
 }

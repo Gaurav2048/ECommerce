@@ -143,15 +143,16 @@
 
         />
 
-    <ImageView
+    <CheckBox
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:id="@+id/upvote_button"
         android:layout_alignParentRight="true"
         android:layout_marginRight="15dp"
+        android:button="@null"
+        android:background="@drawable/like_icon"
         android:layout_marginTop="60dp"
-        android:src="@mipmap/ic_like"
-        android:padding="7dp"
+        android:padding="3dp"
 
         />
 
